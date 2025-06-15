@@ -83,7 +83,7 @@ export default function ExploreProjects() {
     "تطوير الألعاب",
     "الحوسبة السحابية",
     "إنترنت الأشياء",
-    "الواقع الم��زز والافتراضي",
+    "الواقع المعزز ��الافتراضي",
     "الروبوتات",
     "البلوك تشين",
     "التجارة الإلكترونية",
@@ -163,7 +163,7 @@ export default function ExploreProjects() {
     "التمويل",
     "التسويق",
     "الموارد البشرية",
-    "إدارة العمليات",
+    "إدارة العملي��ت",
     "ريادة الأعمال",
     "التجارة الدولية",
     "إدارة السلسلة التوريدية",
@@ -283,7 +283,7 @@ export default function ExploreProjects() {
     "التدريب الرياضي",
     "فسيولوجيا الرياضة",
     "النشاط البدني المكيف",
-    "��لترويح الرياضي",
+    "الترويح الرياضي",
     "علم النفس الرياضي",
     "الإعلام الرياضي",
 
@@ -307,7 +307,8 @@ export default function ExploreProjects() {
     {
       id: 1,
       title: "نظام إدارة المرضى باستخدام الذكاء الاصطناعي",
-      description: "تطبيق ويب متكامل لإدارة بيانات المرضى وحجز المواعيد باستخدام خوارزميات التعلم الآلي لتحسين كفاءة الخدمات الطبية",
+      description:
+        "تطبيق ويب متكامل لإدارة بيانات المرضى وحجز المواعيد باستخدام خوارزميات التعلم الآلي لتحسين كفاءة الخدمات الطبية",
       author: "سارة أحمد المطيري",
       university: "جامعة الملك سعود",
       major: "علوم الحاسب",
@@ -316,19 +317,24 @@ export default function ExploreProjects() {
       views: 245,
       comments: 18,
       tags: ["ذكاء اصطناعي", "تطوير ويب", "صحة", "قواعد بيانات"],
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=400&h=250",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=400&h=250",
       downloadCount: 89,
-      featured: true
-    }
+      featured: true,
+    },
   ];
 
   // Filter projects based on search and filters
-  const filteredProjects = sampleProjects.filter(project => {
-    if (searchQuery && !project.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        !project.description.toLowerCase().includes(searchQuery.toLowerCase())) {
+  const filteredProjects = sampleProjects.filter((project) => {
+    if (
+      searchQuery &&
+      !project.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      !project.description.toLowerCase().includes(searchQuery.toLowerCase())
+    ) {
       return false;
     }
-    if (selectedUniversity && project.university !== selectedUniversity) return false;
+    if (selectedUniversity && project.university !== selectedUniversity)
+      return false;
     if (selectedMajor && project.major !== selectedMajor) return false;
     if (selectedYear && project.year !== selectedYear) return false;
     return true;
@@ -355,7 +361,7 @@ export default function ExploreProjects() {
               <div className="relative">
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <Input
-                  placeholder="ابحث في ��لمشاريع..."
+                  placeholder="ابحث في المشاريع..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pr-10 text-right"
@@ -452,7 +458,10 @@ export default function ExploreProjects() {
           {filteredProjects.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects.map((project) => (
-                <Card key={project.id} className="gradient-card overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                <Card
+                  key={project.id}
+                  className="gradient-card overflow-hidden hover:shadow-lg transition-all duration-300 group"
+                >
                   {/* Project Image */}
                   <div className="relative h-48 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-gray-700 dark:to-gray-600 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -557,6 +566,7 @@ export default function ExploreProjects() {
               </Card>
             </div>
           )}
+        </div>
 
         {/* Coming Soon Section */}
         <div className="max-w-7xl mx-auto mt-16">
