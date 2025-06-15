@@ -110,7 +110,7 @@ export default function ProjectDetails() {
         {/* Breadcrumb */}
         <div className="flex items-center space-x-2 space-x-reverse mb-6 text-sm text-gray-500">
           <Link to="/" className="hover:text-primary-600">
-            ال��ئيسية
+            الرئيسية
           </Link>
           <span>/</span>
           <Link to="/explore" className="hover:text-primary-600">
