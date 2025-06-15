@@ -48,7 +48,7 @@ export default function ExploreProjects() {
     "جامعة الدمام",
     "جامعة بيشة",
     "الجامعة السعودية الإلكترونية",
-    "جامعة الأمير محمد بن ��هد",
+    "جامعة الأمير محمد بن فهد",
     "جامعة دار العلوم",
     "جامعة الملك عبدالله للعلوم والتقنية",
     "كلية الأمير سلطان العسكرية للعلوم الصحية",
@@ -85,7 +85,7 @@ export default function ExploreProjects() {
     "إنترنت الأشياء",
     "الواقع المعزز والافتراضي",
     "الروبوتات",
-    "البلوك ت��ين",
+    "البلوك تشين",
     "التجارة الإلكترونية",
     "إدارة الأعمال التقنية",
     "تصميم تجربة المستخدم",
@@ -235,7 +235,7 @@ export default function ExploreProjects() {
     "الجغرافيا",
     "الأنثروبولوجيا",
     "علم الآثار",
-    "الدراسات الإسلامية",
+    "ال��راسات الإسلامية",
     "الدراسات العربية",
     "الفلسفة",
 
@@ -265,7 +265,7 @@ export default function ExploreProjects() {
 
     // Agriculture & Food
     "الزراعة",
-    "ا��إنتاج النباتي",
+    "الإنتاج النباتي",
     "الإنتاج الحيواني",
     "علوم التربة",
     "وقاية النبات",
@@ -354,17 +354,17 @@ export default function ExploreProjects() {
         </div>
 
         {/* Filters */}
-        <Card className="gradient-card p-6 mb-8 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+        <Card className="gradient-card p-4 sm:p-6 mb-6 sm:mb-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4">
             {/* Search */}
-            <div className="lg:col-span-2">
+            <div className="sm:col-span-2 lg:col-span-2">
               <div className="relative">
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <Input
                   placeholder="ابحث في المشاريع..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pr-10 text-right"
+                  className="pr-10 text-right min-h-[44px]"
                 />
               </div>
             </div>
@@ -456,7 +456,7 @@ export default function ExploreProjects() {
         {/* Projects Grid */}
         <div className="max-w-7xl mx-auto">
           {filteredProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {filteredProjects.map((project) => (
                 <Card
                   key={project.id}
@@ -480,7 +480,7 @@ export default function ExploreProjects() {
                     </div>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-4 sm:p-6">
                     {/* Project Title */}
                     <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
                       {project.title}
@@ -569,8 +569,8 @@ export default function ExploreProjects() {
         </div>
 
         {/* Coming Soon Section */}
-        <div className="max-w-7xl mx-auto mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto mt-8 sm:mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             <Card className="gradient-card p-6 text-center">
               <div className="w-16 h-16 bg-gradient-secondary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Search className="w-8 h-8 text-white" />
