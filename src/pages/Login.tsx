@@ -19,11 +19,12 @@ export default function Login() {
     e.preventDefault();
     // Handle login
     console.log("Login submitted:", formData);
+    alert("تم تسجيل الدخول بنجاح!");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center py-12 px-4">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center py-12">
+      <div className="w-full max-w-md px-4">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gradient mb-4">
             تسجيل الدخول
@@ -174,7 +175,7 @@ export default function Login() {
             {/* Sign Up Link */}
             <div className="text-center">
               <span className="text-gray-600 dark:text-gray-400">
-                ليس لديك حساب؟{" "}
+                هل لديك حساب؟{" "}
               </span>
               <Link
                 to="/signup"
