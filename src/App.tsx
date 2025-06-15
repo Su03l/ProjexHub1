@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigation } from "./components/ui/navigation";
+import { Footer } from "./components/ui/footer";
 import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -36,6 +37,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </BrowserRouter>
   );
