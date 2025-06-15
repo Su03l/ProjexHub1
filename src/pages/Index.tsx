@@ -17,7 +17,7 @@ export default function Index() {
     return () => clearInterval(timer);
   }, []);
 
-  // Format time to Arabic
+  // Format time with English numbers
   const formatTime = (date: Date) => {
     const options: Intl.DateTimeFormatOptions = {
       hour: "2-digit",
@@ -26,10 +26,10 @@ export default function Index() {
       hour12: false,
       timeZone: "Asia/Riyadh",
     };
-    return date.toLocaleTimeString("ar-SA", options);
+    return date.toLocaleTimeString("en-US", options);
   };
 
-  // Format date to Arabic
+  // Format date with English numbers but Arabic text
   const formatDate = (date: Date) => {
     const options: Intl.DateTimeFormatOptions = {
       weekday: "long",
@@ -38,7 +38,8 @@ export default function Index() {
       day: "numeric",
       timeZone: "Asia/Riyadh",
     };
-    return date.toLocaleDateString("ar-SA", options);
+    // Get Arabic text but with English numbers
+    return date.toLocaleDateString("ar-SA-u-nu-latn", options);
   };
 
   return (
