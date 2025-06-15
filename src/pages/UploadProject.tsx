@@ -56,7 +56,7 @@ export default function UploadProject() {
     "الروبوتات",
     "البلوك تشين",
     "التجارة الإلكترونية",
-    "��دارة الأعمال التقنية",
+    "إدارة الأعمال التقنية",
     "تصميم تجربة المستخدم",
     "الجرافيك والوسائط المتعددة",
 
@@ -292,13 +292,13 @@ export default function UploadProject() {
             {/* Basic Information */}
             <Card className="gradient-card p-6">
               <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-                المعلومات الأس��سية
+                المعلومات الأساسية
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Project Title */}
                 <div className="md:col-span-2">
-                  <Label htmlFor="title">عنوان المشروع *</Label>
+                  <Label htmlFor="title">عنوان المشر��ع *</Label>
                   <Input
                     id="title"
                     type="text"
