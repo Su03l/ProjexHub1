@@ -40,7 +40,7 @@ export default function ExploreProjects() {
     "جامعة تبوك",
     "جامعة القصيم",
     "جامعة الأميرة نورة بنت عبدالرحمن",
-    "جامعة الملك سعود ��ن عبدالعزيز للعلوم الصحية",
+    "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية",
     "جامعة الفيصل",
     "جامعة الأمير سطام بن عبدالعزيز",
     "جامعة المجمعة",
@@ -50,7 +50,7 @@ export default function ExploreProjects() {
     "الجامعة السعودية الإلكترونية",
     "جامعة الأمير محمد بن فهد",
     "جامعة دار العلوم",
-    "جامعة الملك عبدالله للعلوم والتقنية",
+    "جامعة الملك عبد��لله للعلوم والتقنية",
     "كلية الأمير سلطان العسكرية للعلوم الصحية",
     "جامعة الأمير سلطان",
     "جامعة الأمير مقرن",
@@ -106,7 +106,7 @@ export default function ExploreProjects() {
     "هندسة الاتصالات",
     "هندسة الإلكترونيات",
     "هندسة التحكم",
-    "هندسة الطي��ان والفضاء",
+    "هندسة الطيران والفضاء",
     "هندسة المياه والبيئة",
     "هندسة الأغذية",
     "هندسة الزراعة",
@@ -133,7 +133,7 @@ export default function ExploreProjects() {
     "الطب النفسي",
     "طب الطوارئ",
     "طب الأسرة",
-    "الطب الباطني",
+    "الطب البا��ني",
 
     // Sciences
     "الفيزياء",
@@ -516,7 +516,7 @@ export default function ExploreProjects() {
                     {/* Stats */}
                     <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
                       <span>{project.comments} تعليق</span>
-                      <span>{project.downloadCount} ت��ميل</span>
+                      <span>{project.downloadCount} تحميل</span>
                       <span>{project.year}</span>
                     </div>
 
