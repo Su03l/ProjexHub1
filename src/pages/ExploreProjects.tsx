@@ -40,7 +40,7 @@ export default function ExploreProjects() {
     "جامعة تبوك",
     "جامعة القصيم",
     "جامعة الأميرة نورة بنت عبدالرحمن",
-    "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية",
+    "جامعة الملك سعود ��ن عبدالعزيز للعلوم الصحية",
     "جامعة الفيصل",
     "جامعة الأمير سطام بن عبدالعزيز",
     "جامعة المجمعة",
@@ -106,7 +106,7 @@ export default function ExploreProjects() {
     "هندسة الاتصالات",
     "هندسة الإلكترونيات",
     "هندسة التحكم",
-    "هندسة الطيران والفضاء",
+    "هندسة الطي��ان والفضاء",
     "هندسة المياه والبيئة",
     "هندسة الأغذية",
     "هندسة الزراعة",
@@ -516,7 +516,7 @@ export default function ExploreProjects() {
                     {/* Stats */}
                     <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
                       <span>{project.comments} تعليق</span>
-                      <span>{project.downloadCount} تحميل</span>
+                      <span>{project.downloadCount} ت��ميل</span>
                       <span>{project.year}</span>
                     </div>
 
@@ -591,7 +591,7 @@ export default function ExploreProjects() {
                 مجتمع نشط
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                انضم إلى مجتمع متنامي من الطلاب والأ��اديميين المبدعين
+                انضم إلى مجتمع متنامي من الطلاب والأكاديميين المبدعين
               </p>
             </Card>
 
