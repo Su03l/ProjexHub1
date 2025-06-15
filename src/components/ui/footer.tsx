@@ -31,8 +31,8 @@ export function Footer() {
               <span className="text-xl font-bold text-gradient">ProjexHub</span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              منصة تبادل مشاريع التخرج الج��معية - اكتشف، شارك، وتعلم مع مجتمع
-              من المبدعين
+              منصة تبادل مشاريع التخرج الجامعية - اكتشف، شارك، وتعلم مع مجتمع من
+              المبدعين
             </p>
             <div className="flex items-center space-x-4 space-x-reverse">
               <a
@@ -148,12 +148,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <button
-                  onClick={handleContactClick}
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors text-right"
+                <Link
+                  to="/contact"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors"
                 >
-                  تواصل معنا عبر واتساب
-                </button>
+                  تواصل معنا
+                </Link>
               </li>
               <li>
                 <a
