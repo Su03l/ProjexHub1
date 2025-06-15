@@ -19,10 +19,6 @@ import {
   Github,
   ExternalLink,
   X,
-  CheckCircle,
-  AlertCircle,
-  Lightbulb,
-  Sparkles,
 } from "lucide-react";
 
 export default function UploadProject() {
@@ -39,10 +35,9 @@ export default function UploadProject() {
 
   const [files, setFiles] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
-  const [aiAnalysis, setAiAnalysis] = useState(null);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const majors = [
+    // Computer Science & IT
     "علوم الحاسب",
     "هندسة البرمجيات",
     "هندسة الحاسب",
@@ -58,6 +53,85 @@ export default function UploadProject() {
     "الواقع المعزز والافتراضي",
     "الروبوتات",
     "البلوك تشين",
+    "التجارة الإلكترونية",
+    "إدارة الأعمال التقنية",
+    "تصميم تجربة المستخدم",
+    "الجرافيك والوسائط المتعددة",
+
+    // Engineering
+    "هندسة الطيران",
+    "الهندسة المدنية",
+    "الهندسة الكهربائية",
+    "الهندسة الميكانيكية",
+    "الهندسة الكيميائية",
+    "الهندسة الصناعية",
+    "هندسة البترول",
+    "هندسة المواد",
+    "هندسة البيئة",
+    "هندسة التعدين",
+    "هندسة الطاقة المتجددة",
+    "هندسة الاتصالات",
+    "هندسة الإلكترونيات",
+    "هندسة التحكم",
+    "هندسة الطيران والفضاء",
+    "هندسة المياه والبيئة",
+    "هندسة الأغذية",
+    "هندسة الزراعة",
+    "هندسة الغابات",
+    "هندسة المساحة",
+
+    // Medical Sciences
+    "الطب",
+    "طب الأسنان",
+    "الصيدلة",
+    "التمريض",
+    "العلوم الطبية التطبيقية",
+    "العلاج الطبيعي",
+    "تقنية الأشعة",
+    "المختبرات الطبية",
+    "التغذية الإكلينيكية",
+    "الصحة العامة",
+    "إدارة المعلومات الصحية",
+    "الطب البيطري",
+
+    // Sciences
+    "الفيزياء",
+    "الكيمياء",
+    "الأحياء",
+    "الرياضيات",
+    "الإحصاء",
+    "الجيولوجيا",
+    "الجغرافيا",
+    "علوم البحار",
+    "علوم الأرض",
+    "علوم الفضاء",
+
+    // Business & Management
+    "إدارة الأعمال",
+    "المحاسبة",
+    "التمويل",
+    "التسويق",
+    "الموارد البشرية",
+    "إدارة العمليات",
+    "ريادة الأعمال",
+    "التجارة الدولية",
+
+    // Others
+    "القانون",
+    "الشريعة الإسلامية",
+    "العلوم السياسية",
+    "العلاقات الدولية",
+    "الإعلام والاتصال",
+    "الصحافة",
+    "التصميم الجرافيكي",
+    "العمارة",
+    "التخطيط العمراني",
+    "علم النفس",
+    "علم الاجتماع",
+    "التاريخ",
+    "الأدب العربي",
+    "اللغة الإنجليزية",
+    "الترجمة",
   ];
 
   const academicYears = ["2024", "2023", "2022", "2021", "2020"];
@@ -133,33 +207,11 @@ export default function UploadProject() {
     setFiles(files.filter((_, index) => index !== indexToRemove));
   };
 
-  const analyzeProject = () => {
-    setIsAnalyzing(true);
-    // Simulate AI analysis
-    setTimeout(() => {
-      setAiAnalysis({
-        score: 85,
-        strengths: [
-          "عنوان واضح ومعبر عن المشروع",
-          "وصف مفصل يغطي جوانب المشروع",
-          "استخدام تقنيات حديثة ومتنوعة",
-          "تنظيم جيد للملفات والمرفقات",
-        ],
-        suggestions: [
-          "أضف المزيد من الصور التوضيحية",
-          "قم بتضمين فيديو شرح للمشروع",
-          "أضف رابط للكود المصدري على GitHub",
-          "تأكد من وجود ملف README شامل",
-        ],
-      });
-      setIsAnalyzing(false);
-    }, 3000);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
     console.log("Project submitted:", { formData, files, selectedSkills });
+    alert("تم رفع المشروع بنجاح! سيتم مراجعته قبل النشر.");
   };
 
   return (
@@ -225,7 +277,7 @@ export default function UploadProject() {
 
               {/* Academic Year */}
               <div>
-                <Label>السنة الدراسية *</Label>
+                <Label>سنة التخرج *</Label>
                 <Select
                   onValueChange={(value) =>
                     setFormData({ ...formData, year: value })
@@ -440,93 +492,6 @@ export default function UploadProject() {
                 />
               </div>
             </div>
-          </Card>
-
-          {/* AI Analysis */}
-          <Card className="gradient-card p-6">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-              <Sparkles className="w-6 h-6 ml-2 text-accent-500" />
-              تحليل المشروع بالذكاء الاصطناعي
-            </h2>
-
-            {!aiAnalysis && !isAnalyzing && (
-              <div className="text-center py-8">
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  احصل على تحليل فوري لمشروعك وتوصيات لتحسينه
-                </p>
-                <Button
-                  type="button"
-                  onClick={analyzeProject}
-                  className="btn-gradient text-white"
-                >
-                  <Lightbulb className="w-4 h-4 ml-2" />
-                  تحليل المشروع
-                </Button>
-              </div>
-            )}
-
-            {isAnalyzing && (
-              <div className="text-center py-8">
-                <div className="animate-spin w-8 h-8 border-4 border-primary-500 border-t-transparent rounded-full mx-auto mb-4"></div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  جاري تحليل مشروعك...
-                </p>
-              </div>
-            )}
-
-            {aiAnalysis && (
-              <div className="space-y-6">
-                {/* Score */}
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-gradient mb-2">
-                    {aiAnalysis.score}/100
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    درجة جودة المشروع
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Strengths */}
-                  <div>
-                    <h3 className="font-semibold text-green-600 dark:text-green-400 mb-3 flex items-center">
-                      <CheckCircle className="w-4 h-4 ml-1" />
-                      نقاط القوة
-                    </h3>
-                    <ul className="space-y-2">
-                      {aiAnalysis.strengths.map((strength, index) => (
-                        <li
-                          key={index}
-                          className="text-sm text-gray-600 dark:text-gray-300 flex items-start"
-                        >
-                          <span className="w-2 h-2 bg-green-500 rounded-full mt-2 ml-2 flex-shrink-0"></span>
-                          {strength}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Suggestions */}
-                  <div>
-                    <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-3 flex items-center">
-                      <AlertCircle className="w-4 h-4 ml-1" />
-                      اقتراحات التحسين
-                    </h3>
-                    <ul className="space-y-2">
-                      {aiAnalysis.suggestions.map((suggestion, index) => (
-                        <li
-                          key={index}
-                          className="text-sm text-gray-600 dark:text-gray-300 flex items-start"
-                        >
-                          <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 ml-2 flex-shrink-0"></span>
-                          {suggestion}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            )}
           </Card>
 
           {/* Submit Button */}
