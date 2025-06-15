@@ -40,18 +40,18 @@ const config: Config = {
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#F97316",
-          50: "#FFF7ED",
-          100: "#FFEDD5",
-          200: "#FED7AA",
-          300: "#FDBA74",
-          400: "#FB923C",
-          500: "#F97316",
-          600: "#EA580C",
-          700: "#C2410C",
-          800: "#9A3412",
-          900: "#7C2D12",
-          950: "#431407",
+          DEFAULT: "#6366F1",
+          50: "#EEF2FF",
+          100: "#E0E7FF",
+          200: "#C7D2FE",
+          300: "#A5B4FC",
+          400: "#818CF8",
+          500: "#6366F1",
+          600: "#4F46E5",
+          700: "#4338CA",
+          800: "#3730A3",
+          900: "#312E81",
+          950: "#1E1B4B",
           foreground: "hsl(var(--secondary-foreground))",
         },
         accent: {
@@ -145,7 +145,7 @@ const config: Config = {
         "gradient-primary":
           "linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #EC4899 100%)",
         "gradient-secondary":
-          "linear-gradient(135deg, #F97316 0%, #EA580C 50%, #C2410C 100%)",
+          "linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #4338CA 100%)",
         "gradient-accent":
           "linear-gradient(135deg, #F59E0B 0%, #EF4444 50%, #EC4899 100%)",
         "gradient-dark":

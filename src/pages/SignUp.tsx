@@ -317,7 +317,7 @@ export default function SignUp() {
   const educationLevels = [
     "بكالوريوس",
     "ماجستير",
-    "دكتو��اه",
+    "دكتوراه",
     "دبلوم عالي",
     "دبلوم",
   ];
@@ -554,7 +554,7 @@ export default function SignUp() {
             <div className="space-y-2">
               <Label className="flex items-center space-x-2 space-x-reverse">
                 <BookOpen className="w-4 h-4" />
-                <span>هل أنت ما زلت تدر��؟</span>
+                <span>الحالة الدراسية</span>
               </Label>
               <Select
                 onValueChange={(value) =>
@@ -565,11 +565,11 @@ export default function SignUp() {
                   <SelectValue placeholder="اختر حالتك الدراسية" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="yes" className="text-right">
-                    نعم، ما زلت أدرس
+                  <SelectItem value="studying" className="text-right">
+                    طالب حالياً
                   </SelectItem>
-                  <SelectItem value="no" className="text-right">
-                    لا، تخرجت
+                  <SelectItem value="graduated" className="text-right">
+                    متخرج
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -586,7 +586,7 @@ export default function SignUp() {
             {/* Login Link */}
             <div className="text-center">
               <span className="text-gray-600 dark:text-gray-400">
-                لديك حساب با��فعل؟{" "}
+                هل لديك حساب؟{" "}
               </span>
               <Link
                 to="/login"

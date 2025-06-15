@@ -136,14 +136,6 @@ export function Footer() {
                   href="#"
                   className="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors"
                 >
-                  مركز المساعدة
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors"
-                >
                   الأسئلة الشائعة
                 </a>
               </li>
