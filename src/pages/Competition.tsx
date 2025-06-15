@@ -63,7 +63,7 @@ export default function Competition() {
             <div className="flex items-center justify-center space-x-4 space-x-reverse">
               <Clock className="w-6 h-6 text-primary-500" />
               <span className="text-lg font-medium text-gray-900 dark:text-white">
-                الإطلاق المتوقع: فبراير 2024
+                سيتم تحديد الوقت والتاريخ لاحقاً....
               </span>
             </div>
           </div>
