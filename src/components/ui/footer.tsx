@@ -12,7 +12,7 @@ import {
 export function Footer() {
   const handleContactClick = () => {
     // WhatsApp number - replace with actual number
-    const phoneNumber = "966501234567"; // Example Saudi number
+    const phoneNumber = "966531608085"; // رقم الواتساب الرسمي
     const message = "مرحبا، أريد التواصل معكم حول منصة ProjexHub";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
