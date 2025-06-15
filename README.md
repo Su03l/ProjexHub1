@@ -1,6 +1,5 @@
 # ProjexHub - منصة تبادل مشاريع التخرج الجامعية
 
-![ProjexHub](public/placeholder.svg)
 
 ## نظرة عامة
 
