@@ -37,7 +37,7 @@ export default function ExploreProjects() {
       id: 1,
       title: "نظام إدارة المكتبات الذكي",
       description:
-        "نظام متطور لإدارة المكتبات الجامعية باستخدام تقنيات الذكاء الاصطناعي مع واجهة مستخدم حدي��ة وقاعدة بيانات متقدمة",
+        "نظام متطور لإ��ارة المكتبات الجامعية باستخدام تقنيات الذكاء الاصطناعي مع واجهة مستخدم حديثة وقاعدة بيانات متقدمة",
       author: "سارة أحمد محمد",
       university: "جامعة الملك سعود",
       major: "علوم الحاسب",
@@ -180,7 +180,11 @@ export default function ExploreProjects() {
             </div>
 
             {/* University Filter */}
-            <Select onValueChange={setSelectedUniversity}>
+            <Select
+              onValueChange={(value) =>
+                setSelectedUniversity(value === "all-universities" ? "" : value)
+              }
+            >
               <SelectTrigger>
                 <SelectValue placeholder="الجامعة" />
               </SelectTrigger>
@@ -199,7 +203,11 @@ export default function ExploreProjects() {
             </Select>
 
             {/* Major Filter */}
-            <Select onValueChange={setSelectedMajor}>
+            <Select
+              onValueChange={(value) =>
+                setSelectedMajor(value === "all-majors" ? "" : value)
+              }
+            >
               <SelectTrigger>
                 <SelectValue placeholder="التخصص" />
               </SelectTrigger>
@@ -214,7 +222,11 @@ export default function ExploreProjects() {
             </Select>
 
             {/* Year Filter */}
-            <Select onValueChange={setSelectedYear}>
+            <Select
+              onValueChange={(value) =>
+                setSelectedYear(value === "all-years" ? "" : value)
+              }
+            >
               <SelectTrigger>
                 <SelectValue placeholder="السنة" />
               </SelectTrigger>
@@ -244,7 +256,7 @@ export default function ExploreProjects() {
                   الأكثر مشاهدة
                 </SelectItem>
                 <SelectItem value="comments" className="text-right">
-                  الأكثر تعليقاً
+                  الأكث�� تعليقاً
                 </SelectItem>
               </SelectContent>
             </Select>
