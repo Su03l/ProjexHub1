@@ -122,7 +122,7 @@ export default function UploadProject() {
     "القانون",
     "الشريعة الإسلامية",
     "العلوم السياسية",
-    "العلاقات الدولية",
+    "ال��لاقات الدولية",
     "الإعلام والاتصال",
     "الصحافة",
     "التصميم الجرافيكي",
@@ -298,7 +298,7 @@ export default function UploadProject() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Project Title */}
                 <div className="md:col-span-2">
-                  <Label htmlFor="title">عنوان المشر��ع *</Label>
+                  <Label htmlFor="title">عنوان المشروع *</Label>
                   <Input
                     id="title"
                     type="text"
