@@ -58,7 +58,7 @@ export default function Index() {
           </div>
 
           {/* Search Bar */}
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="max-w-3xl mx-auto mb-8">
             <div className="relative gradient-card p-1">
               <div className="flex items-center bg-white dark:bg-gray-800 rounded-lg p-4">
                 <Search className="w-6 h-6 text-gray-400 ml-3" />
@@ -72,6 +72,58 @@ export default function Index() {
                 <Link to="/explore">
                   <Button className="btn-gradient text-white mr-2">بحث</Button>
                 </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-time Clock */}
+          <div className="max-w-2xl mx-auto mb-12">
+            <div className="gradient-card p-6 text-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+              <div className="flex items-center justify-center mb-3">
+                <Clock className="w-6 h-6 text-primary-500 ml-2" />
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  التوقيت الحالي - الرياض
+                </h3>
+              </div>
+
+              {/* Time Display */}
+              <div className="mb-4">
+                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2 font-mono tracking-wider">
+                  {formatTime(currentTime)}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {formatDate(currentTime)}
+                </div>
+              </div>
+
+              {/* Time Components */}
+              <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
+                <div className="bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-lg p-3">
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                    {currentTime.getHours().toString().padStart(2, "0")}
+                  </div>
+                  <div className="text-xs text-primary-600/70 dark:text-primary-400/70 font-medium">
+                    ساعة
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900/20 dark:to-secondary-800/20 rounded-lg p-3">
+                  <div className="text-2xl font-bold text-secondary-600 dark:text-secondary-400">
+                    {currentTime.getMinutes().toString().padStart(2, "0")}
+                  </div>
+                  <div className="text-xs text-secondary-600/70 dark:text-secondary-400/70 font-medium">
+                    دقيقة
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-accent-50 to-accent-100 dark:from-accent-900/20 dark:to-accent-800/20 rounded-lg p-3">
+                  <div className="text-2xl font-bold text-accent-600 dark:text-accent-400">
+                    {currentTime.getSeconds().toString().padStart(2, "0")}
+                  </div>
+                  <div className="text-xs text-accent-600/70 dark:text-accent-400/70 font-medium">
+                    ثانية
+                  </div>
+                </div>
               </div>
             </div>
           </div>
