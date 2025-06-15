@@ -109,7 +109,7 @@ export default function TermsOfService() {
           {/* Section 5 */}
           <Card className="gradient-card p-6">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-              5. القيود ��المحظورات
+              5. القيود والمحظورات
             </h3>
             <div className="text-gray-600 dark:text-gray-400 space-y-3">
               <p>• عدم محاولة اختراق أو تعطيل المنصة</p>
@@ -136,7 +136,7 @@ export default function TermsOfService() {
           {/* Section 7 */}
           <Card className="gradient-card p-6">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-              7. إنهاء الخدمة
+              7. إنهاء ا��خدمة
             </h3>
             <div className="text-gray-600 dark:text-gray-400 space-y-3">
               <p>• يمكنك إنهاء حسابك في أي وقت من خلال إعدادات الحساب</p>
@@ -154,7 +154,7 @@ export default function TermsOfService() {
             <div className="text-gray-600 dark:text-gray-400 space-y-3">
               <p>• المنصة تُقدم "كما هي" دون ضمانات صريحة أو ضمنية</p>
               <p>• لا نتحمل مسؤولية أي أضرار مباشرة أو غير مباشرة</p>
-              <p>• مسؤول��تنا محدودة بقدر ما يسمح به النظام السعودي</p>
+              <p>• مسؤوليتنا محدودة بقدر ما يسمح به النظام السعودي</p>
               <p>• المستخدم مسؤول عن أمان حسابه وكلمة المرور</p>
             </div>
           </Card>
