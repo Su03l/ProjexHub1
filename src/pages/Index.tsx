@@ -6,6 +6,40 @@ import { Search, BookOpen, Users, Trophy, Sparkles, Clock } from "lucide-react";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  // Update time every second
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // Format time to Arabic
+  const formatTime = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+      timeZone: "Asia/Riyadh",
+    };
+    return date.toLocaleTimeString("ar-SA", options);
+  };
+
+  // Format date to Arabic
+  const formatDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "Asia/Riyadh",
+    };
+    return date.toLocaleDateString("ar-SA", options);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 w-full">
