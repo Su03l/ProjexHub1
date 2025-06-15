@@ -87,11 +87,8 @@ export default function Index() {
                 </h3>
               </div>
 
-              {/* Time Display */}
+              {/* Date Display */}
               <div className="mb-4">
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2 font-mono tracking-wider">
-                  {formatTime(currentTime)}
-                </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">
                   {formatDate(currentTime)}
                 </div>
