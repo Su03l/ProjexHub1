@@ -30,7 +30,7 @@ export default function ExploreProjects() {
     "جامعة أم القرى",
     "الجامعة الإسلامية بالمدينة المنورة",
     "جامعة طيبة",
-    "��امعة الطائف",
+    "جامعة الطائف",
     "جامعة جازان",
     "جامعة نجران",
     "جامعة الباحة",
@@ -111,7 +111,7 @@ export default function ExploreProjects() {
     "هندسة الأغذية",
     "هندسة الزراعة",
     "هندسة الغابات",
-    "هندسة المساحة",
+    "هندسة ��لمساحة",
 
     // Medical Sciences
     "الطب",
@@ -443,7 +443,7 @@ export default function ExploreProjects() {
                   الأعلى تقييماً
                 </SelectItem>
                 <SelectItem value="views" className="text-right">
-                  الأكثر مشاهدة
+                  ال��كثر مشاهدة
                 </SelectItem>
                 <SelectItem value="comments" className="text-right">
                   الأكثر تعليقاً
