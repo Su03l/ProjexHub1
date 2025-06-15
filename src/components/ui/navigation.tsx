@@ -4,9 +4,7 @@ import { Button } from "./button";
 import { ThemeToggle } from "./theme-toggle";
 import {
   Search,
-  Bell,
   MessageCircle,
-  User,
   Home,
   Upload,
   Trophy,
@@ -72,32 +70,16 @@ export function Navigation() {
           <div className="flex items-center space-x-4 space-x-reverse">
             <ThemeToggle />
 
-            {isLoggedIn ? (
-              <>
-                <Button variant="ghost" size="sm" className="relative">
-                  <Bell className="w-5 h-5" />
-                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-accent-500 rounded-full text-xs"></span>
+            <div className="flex items-center space-x-2 space-x-reverse">
+              <Link to="/login">
+                <Button variant="ghost" size="sm" onClick={handleLogin}>
+                  تسجيل الدخول
                 </Button>
-                <Link to="/profile">
-                  <Button variant="ghost" size="sm">
-                    <User className="w-5 h-5" />
-                  </Button>
-                </Link>
-              </>
-            ) : (
-              <div className="flex items-center space-x-2 space-x-reverse">
-                <Link to="/login">
-                  <Button variant="ghost" size="sm" onClick={handleLogin}>
-                    تسجيل الدخول
-                  </Button>
-                </Link>
-                <Link to="/signup">
-                  <Button className="btn-gradient text-white">
-                    إنشاء حساب
-                  </Button>
-                </Link>
-              </div>
-            )}
+              </Link>
+              <Link to="/signup">
+                <Button className="btn-gradient text-white">إنشاء حساب</Button>
+              </Link>
+            </div>
 
             {/* Mobile Menu Button */}
             <Button

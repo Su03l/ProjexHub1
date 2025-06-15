@@ -83,7 +83,7 @@ export default function ExploreProjects() {
     "تطوير الألعاب",
     "الحوسبة السحابية",
     "إنترنت الأشياء",
-    "الواقع المعزز والافتراضي",
+    "الواقع الم��زز والافتراضي",
     "الروبوتات",
     "البلوك تشين",
     "التجارة الإلكترونية",
@@ -241,7 +241,7 @@ export default function ExploreProjects() {
 
     // Languages & Literature
     "الأدب العربي",
-    "اللغة الإنج��يزية",
+    "اللغة الإنجليزية",
     "اللغة الفرنسية",
     "اللغة الألمانية",
     "اللغة الإسبانية",
@@ -283,7 +283,7 @@ export default function ExploreProjects() {
     "التدريب الرياضي",
     "فسيولوجيا الرياضة",
     "النشاط البدني المكيف",
-    "الترويح الرياضي",
+    "��لترويح الرياضي",
     "علم النفس الرياضي",
     "الإعلام الرياضي",
 
@@ -301,6 +301,38 @@ export default function ExploreProjects() {
   ];
 
   const years = ["2024", "2023", "2022", "2021"];
+
+  // Sample project data
+  const sampleProjects = [
+    {
+      id: 1,
+      title: "نظام إدارة المرضى باستخدام الذكاء الاصطناعي",
+      description: "تطبيق ويب متكامل لإدارة بيانات المرضى وحجز المواعيد باستخدام خوارزميات التعلم الآلي لتحسين كفاءة الخدمات الطبية",
+      author: "سارة أحمد المطيري",
+      university: "جامعة الملك سعود",
+      major: "علوم الحاسب",
+      year: "2024",
+      rating: 4.8,
+      views: 245,
+      comments: 18,
+      tags: ["ذكاء اصطناعي", "تطوير ويب", "صحة", "قواعد بيانات"],
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=400&h=250",
+      downloadCount: 89,
+      featured: true
+    }
+  ];
+
+  // Filter projects based on search and filters
+  const filteredProjects = sampleProjects.filter(project => {
+    if (searchQuery && !project.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        !project.description.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return false;
+    }
+    if (selectedUniversity && project.university !== selectedUniversity) return false;
+    if (selectedMajor && project.major !== selectedMajor) return false;
+    if (selectedYear && project.year !== selectedYear) return false;
+    return true;
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 w-full">
@@ -323,7 +355,7 @@ export default function ExploreProjects() {
               <div className="relative">
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <Input
-                  placeholder="ابحث في المشاريع..."
+                  placeholder="ابحث في ��لمشاريع..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pr-10 text-right"
@@ -415,35 +447,116 @@ export default function ExploreProjects() {
           </div>
         </Card>
 
-        {/* No Projects Message */}
-        <div className="max-w-4xl mx-auto">
-          <Card className="gradient-card p-12 text-center">
-            <div className="w-24 h-24 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
-              <BookOpen className="w-12 h-12 text-white" />
+        {/* Projects Grid */}
+        <div className="max-w-7xl mx-auto">
+          {filteredProjects.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProjects.map((project) => (
+                <Card key={project.id} className="gradient-card overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                  {/* Project Image */}
+                  <div className="relative h-48 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-gray-700 dark:to-gray-600 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    {project.featured && (
+                      <div className="absolute top-3 right-3 bg-accent-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        مميز
+                      </div>
+                    )}
+                    <div className="absolute bottom-3 left-3 flex space-x-2 space-x-reverse">
+                      <span className="bg-white/90 text-gray-700 px-2 py-1 rounded text-xs">
+                        {project.views} مشاهدة
+                      </span>
+                      <span className="bg-white/90 text-gray-700 px-2 py-1 rounded text-xs">
+                        ⭐ {project.rating}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    {/* Project Title */}
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                      {project.title}
+                    </h3>
+
+                    {/* Project Description */}
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                      {project.description}
+                    </p>
+
+                    {/* Author & University */}
+                    <div className="mb-4">
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">
+                        {project.author}
+                      </p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        {project.university} • {project.major}
+                      </p>
+                    </div>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 px-2 py-1 rounded-full text-xs"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Stats */}
+                    <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
+                      <span>{project.comments} تعليق</span>
+                      <span>{project.downloadCount} تحميل</span>
+                      <span>{project.year}</span>
+                    </div>
+
+                    {/* Action Button */}
+                    <Link to={`/project/${project.id}`} className="w-full">
+                      <Button className="w-full btn-gradient text-white">
+                        عرض المشروع
+                      </Button>
+                    </Link>
+                  </div>
+                </Card>
+              ))}
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              لا توجد مشاريع حالياً
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-              كن أول من يشارك مشروعه على المنصة واحصل على تقييمات من المجتمع
-              الأكاديمي
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/upload">
-                <Button className="btn-gradient text-white px-8 py-3">
-                  <Plus className="w-5 h-5 ml-2" />
-                  رفع مشروع جديد
-                </Button>
-              </Link>
-              <Link to="/signup">
-                <Button variant="outline" className="px-8 py-3">
-                  <Users className="w-5 h-5 ml-2" />
-                  إنشاء حساب
-                </Button>
-              </Link>
+          ) : (
+            /* No Results Message */
+            <div className="max-w-4xl mx-auto">
+              <Card className="gradient-card p-12 text-center">
+                <div className="w-24 h-24 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <BookOpen className="w-12 h-12 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  لا توجد نتائج للبحث
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+                  جرب تعديل معايير البحث أو المرشحات للعثور على مشاريع مناسبة
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/upload">
+                    <Button className="btn-gradient text-white px-8 py-3">
+                      <Plus className="w-5 h-5 ml-2" />
+                      رفع مشروع جديد
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    className="px-8 py-3"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setSelectedUniversity("");
+                      setSelectedMajor("");
+                      setSelectedYear("");
+                    }}
+                  >
+                    إعادة تعيين المرشحات
+                  </Button>
+                </div>
+              </Card>
             </div>
-          </Card>
-        </div>
+          )}
 
         {/* Coming Soon Section */}
         <div className="max-w-7xl mx-auto mt-16">
