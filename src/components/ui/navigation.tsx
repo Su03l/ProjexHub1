@@ -19,6 +19,11 @@ export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Simulate login when clicking login button (for demo purposes)
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
   const navItems = [
     { href: "/", label: "الرئيسية", icon: Home },
     { href: "/explore", label: "تصفح المشاريع", icon: Search },
@@ -80,13 +85,13 @@ export function Navigation() {
             ) : (
               <div className="flex items-center space-x-2 space-x-reverse">
                 <Link to="/login">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" onClick={handleLogin}>
                     تسجيل الدخول
                   </Button>
                 </Link>
                 <Link to="/signup">
                   <Button className="btn-gradient text-white">
-                    إنشاء حساب
+                    إنشاء حسا��
                   </Button>
                 </Link>
               </div>
