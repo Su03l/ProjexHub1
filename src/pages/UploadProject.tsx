@@ -500,7 +500,7 @@ export default function UploadProject() {
                     className="flex items-center space-x-2 space-x-reverse"
                   >
                     <Github className="w-4 h-4" />
-                    <span>رابط GitHub</span>
+                    <span>رابط GitHub (اختياري)</span>
                   </Label>
                   <Input
                     id="githubUrl"
@@ -540,7 +540,7 @@ export default function UploadProject() {
                     className="flex items-center space-x-2 space-x-reverse"
                   >
                     <Video className="w-4 h-4" />
-                    <span>رابط فيديو الشرح</span>
+                    <span>رابط فيديو الشرح (اختياري)</span>
                   </Label>
                   <Input
                     id="videoUrl"
