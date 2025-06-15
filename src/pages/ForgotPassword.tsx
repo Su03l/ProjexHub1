@@ -36,7 +36,7 @@ export default function ForgotPassword() {
     }
   };
 
-  const handlePasswordReset = (e: React.FormData) => {
+  const handlePasswordReset = (e: React.FormEvent) => {
     e.preventDefault();
     if (newPassword === confirmPassword && newPassword.length >= 6) {
       console.log("Password reset successful");
