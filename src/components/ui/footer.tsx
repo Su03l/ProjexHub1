@@ -147,14 +147,7 @@ export function Footer() {
                   تواصل معنا
                 </Link>
               </li>
-              <li>
-                <a
-                  href="mailto:info@projexhub.com"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors"
-                >
-                  البريد الإلكتروني
-                </a>
-              </li>
+
               <li>
                 <a
                   href="#"
