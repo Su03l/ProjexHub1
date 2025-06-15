@@ -87,7 +87,7 @@ export default function ExploreProjects() {
     "الروبوتات",
     "البلوك تشين",
     "التجارة الإلكترونية",
-    "إدارة ا��أعمال التقنية",
+    "إدارة الأعمال التقنية",
     "تصميم تجربة المستخدم",
     "الجرافيك والوسائط المتعددة",
 
@@ -124,7 +124,7 @@ export default function ExploreProjects() {
     "المختبرات الطبية",
     "التغذية الإكلينيكية",
     "الصحة العامة",
-    "إدارة ��لمعلومات الصحية",
+    "إدارة المعلومات الصحية",
     "الطب البيطري",
     "طب العيون",
     "طب الأطفال",
@@ -248,7 +248,7 @@ export default function ExploreProjects() {
     "اللغة الصينية",
     "اللغة اليابانية",
     "الترجمة",
-    "الل��انيات",
+    "اللسانيات",
     "الأدب المقارن",
 
     // Education
@@ -467,7 +467,7 @@ export default function ExploreProjects() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                     {project.featured && (
                       <div className="absolute top-3 right-3 bg-accent-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                        مميز
+                        ��ميز
                       </div>
                     )}
                     <div className="absolute bottom-3 left-3 flex space-x-2 space-x-reverse">
