@@ -10,6 +10,8 @@ import {
   Trophy,
   Menu,
   X,
+  LogIn,
+  UserPlus,
 } from "lucide-react";
 
 export function Navigation() {
@@ -70,7 +72,8 @@ export function Navigation() {
           <div className="flex items-center space-x-4 space-x-reverse">
             <ThemeToggle />
 
-            <div className="flex items-center space-x-2 space-x-reverse">
+            {/* Desktop Login/Signup Buttons */}
+            <div className="hidden md:flex items-center space-x-2 space-x-reverse">
               <Link to="/login">
                 <Button variant="ghost" size="sm" onClick={handleLogin}>
                   تسجيل الدخول
@@ -101,6 +104,7 @@ export function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
             <div className="flex flex-col space-y-2">
+              {/* Navigation Items */}
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
@@ -108,10 +112,10 @@ export function Navigation() {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`flex items-center space-x-3 space-x-reverse px-3 py-2 rounded-lg text-sm font-medium ${
+                    className={`flex items-center space-x-3 space-x-reverse px-3 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                       isActive
                         ? "text-primary-600 bg-primary-50 dark:bg-primary-900/20"
-                        : "text-gray-600 dark:text-gray-300"
+                        : "text-gray-600 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800"
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -120,6 +124,31 @@ export function Navigation() {
                   </Link>
                 );
               })}
+
+              {/* Divider */}
+              <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+
+              {/* Mobile Login/Signup Buttons */}
+              <Link
+                to="/login"
+                className="flex items-center space-x-3 space-x-reverse px-3 py-3 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  handleLogin();
+                }}
+              >
+                <LogIn className="w-4 h-4" />
+                <span>تسجيل الدخول</span>
+              </Link>
+
+              <Link
+                to="/signup"
+                className="flex items-center space-x-3 space-x-reverse px-3 py-3 rounded-lg text-sm font-medium transition-all duration-200 bg-gradient-primary text-white hover:opacity-90"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <UserPlus className="w-4 h-4" />
+                <span>إنشاء حساب</span>
+              </Link>
             </div>
           </div>
         )}
