@@ -157,20 +157,20 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/terms-of-service"
                   className="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors"
                 >
                   شروط الاستخدام
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/privacy-policy"
                   className="text-gray-600 dark:text-gray-400 hover:text-primary-600 transition-colors"
                 >
                   سياسة الخصوصية
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
