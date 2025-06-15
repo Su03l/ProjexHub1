@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
-import { Search, Filter, BookOpen, Users, Plus, ArrowLeft } from "lucide-react";
+import { Search, Filter, BookOpen, Users, Plus } from "lucide-react";
 
 export default function ExploreProjects() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -109,7 +109,7 @@ export default function ExploreProjects() {
     "هندسة الطيران والفضاء",
     "هندسة المياه والبيئة",
     "هندسة الأغذية",
-    "هن��سة الزراعة",
+    "هندسة الزراعة",
     "هندسة الغابات",
     "هندسة المساحة",
 
@@ -241,7 +241,7 @@ export default function ExploreProjects() {
 
     // Languages & Literature
     "الأدب العربي",
-    "اللغة الإنجليزية",
+    "اللغة الإنج��يزية",
     "اللغة الفرنسية",
     "اللغة الألمانية",
     "اللغة الإسبانية",
@@ -303,7 +303,7 @@ export default function ExploreProjects() {
   const years = ["2024", "2023", "2022", "2021"];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 w-full">
       <div className="w-full px-4">
         {/* Header */}
         <div className="text-center mb-8">
@@ -316,7 +316,7 @@ export default function ExploreProjects() {
         </div>
 
         {/* Filters */}
-        <Card className="gradient-card p-6 mb-8 max-w-6xl mx-auto">
+        <Card className="gradient-card p-6 mb-8 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
             {/* Search */}
             <div className="lg:col-span-2">
@@ -425,7 +425,7 @@ export default function ExploreProjects() {
               لا توجد مشاريع حالياً
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-              كن أول من يشارك م��روعه على المنصة واحصل على تقييمات من المجتمع
+              كن أول من يشارك مشروعه على المنصة واحصل على تقييمات من المجتمع
               الأكاديمي
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -446,7 +446,7 @@ export default function ExploreProjects() {
         </div>
 
         {/* Coming Soon Section */}
-        <div className="max-w-6xl mx-auto mt-16">
+        <div className="max-w-7xl mx-auto mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="gradient-card p-6 text-center">
               <div className="w-16 h-16 bg-gradient-secondary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -480,7 +480,7 @@ export default function ExploreProjects() {
                 مشاريع متنوعة
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                ستجد قري��اً مشاريع من جميع التخصصات والجامعات السعودية
+                ستجد مشاريع من جميع التخصصات والجامعات السعودية
               </p>
             </Card>
           </div>

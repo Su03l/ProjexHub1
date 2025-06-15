@@ -8,11 +8,11 @@ export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 w-full">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-20 overflow-hidden w-full">
         <div className="absolute inset-0 bg-gradient-primary opacity-10"></div>
-        <div className="relative w-full text-center">
+        <div className="relative w-full text-center px-4">
           <div className="floating-element">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="text-gradient">ProjexHub</span>
@@ -40,6 +40,26 @@ export default function Index() {
                 </Link>
               </div>
             </div>
+          </div>
+
+          {/* Quick Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
+            {[
+              { icon: BookOpen, label: "مشروع", count: "0" },
+              { icon: Users, label: "طالب", count: "0" },
+              { icon: Trophy, label: "مسابقة", count: "0" },
+              { icon: Sparkles, label: "جامعة", count: "45" },
+            ].map((stat, index) => (
+              <div key={index} className="gradient-card p-6 text-center">
+                <stat.icon className="w-8 h-8 text-primary-500 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {stat.count}
+                </div>
+                <div className="text-gray-600 dark:text-gray-400">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Welcome Message */}
@@ -73,19 +93,19 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4">
-        <div className="w-full">
+      <section className="py-16 w-full">
+        <div className="w-full px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
               ماذا يمكنك فعله في ProjexHub؟
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              استكشف المميزات المتنوعة التي تجعل من تجربتك الأكاديمية أكثر
+              استكشف المميزات المتنوعة التي تجعل من تجربتك الأكاديمية أك��ر
               إثراءً
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             <Card className="gradient-card p-6 text-center hover:shadow-xl transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="w-8 h-8 text-white" />
@@ -138,8 +158,8 @@ export default function Index() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-gray-800/50">
-        <div className="w-full">
+      <section className="py-16 bg-white/50 dark:bg-gray-800/50 w-full">
+        <div className="w-full px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
               تصفح حسب التخصص
@@ -149,7 +169,7 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-7xl mx-auto">
             {[
               "علوم الحاسب",
               "الهندسة",
@@ -176,8 +196,8 @@ export default function Index() {
       </section>
 
       {/* Monthly Competition Banner */}
-      <section className="py-16 px-4">
-        <div className="w-full">
+      <section className="py-16 w-full">
+        <div className="w-full px-4">
           <div className="max-w-5xl mx-auto">
             <div className="gradient-card p-8 md:p-12 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-accent opacity-10"></div>
@@ -208,8 +228,8 @@ export default function Index() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-gray-800/50">
-        <div className="w-full">
+      <section className="py-16 bg-white/50 dark:bg-gray-800/50 w-full">
+        <div className="w-full px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
               ابدأ رحلتك الأكاديمية معنا

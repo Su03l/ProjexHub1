@@ -13,6 +13,7 @@ import Competition from "./pages/Competition";
 import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
+import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 import "./App.css";
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
