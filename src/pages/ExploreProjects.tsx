@@ -111,7 +111,7 @@ export default function ExploreProjects() {
     "هندسة الأغذية",
     "هندسة الزراعة",
     "هندسة الغابات",
-    "هندسة ��لمساحة",
+    "هندسة المساحة",
 
     // Medical Sciences
     "الطب",
@@ -218,7 +218,7 @@ export default function ExploreProjects() {
     // Architecture & Planning
     "العمارة",
     "التخطيط العمراني",
-    "هندسة المناظر الطبيعية",
+    "هندسة الم��اظر الطبيعية",
     "العمارة الداخلية",
     "التصميم المعماري",
     "إدارة الإنشاءات",
@@ -297,7 +297,7 @@ export default function ExploreProjects() {
     "الأمن العام",
     "إدارة الكوارث",
     "الإدارة الصحية",
-    "إدارة التعليم",
+    "إدارة ال��عليم",
   ];
 
   const years = ["2025", "2024", "2023", "2022", "2021"];
@@ -443,7 +443,7 @@ export default function ExploreProjects() {
                   الأعلى تقييماً
                 </SelectItem>
                 <SelectItem value="views" className="text-right">
-                  ال��كثر مشاهدة
+                  الأكثر مشاهدة
                 </SelectItem>
                 <SelectItem value="comments" className="text-right">
                   الأكثر تعليقاً
