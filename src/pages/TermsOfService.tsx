@@ -136,7 +136,7 @@ export default function TermsOfService() {
           {/* Section 7 */}
           <Card className="gradient-card p-6">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-              7. إنهاء ا��خدمة
+              7. إنهاء الخدمة
             </h3>
             <div className="text-gray-600 dark:text-gray-400 space-y-3">
               <p>• يمكنك إنهاء حسابك في أي وقت من خلال إعدادات الحساب</p>
