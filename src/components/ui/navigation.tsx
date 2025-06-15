@@ -41,7 +41,7 @@ export function Navigation() {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 space-x-reverse">
             <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
-              <span className="text-white font-bold text-xl">P</span>
+              <span className="text-white font-bold text-lg">PH</span>
             </div>
             <span className="text-2xl font-bold text-gradient">ProjexHub</span>
           </Link>
@@ -76,7 +76,7 @@ export function Navigation() {
             <div className="hidden md:flex items-center space-x-2 space-x-reverse">
               <Link to="/login">
                 <Button variant="ghost" size="sm" onClick={handleLogin}>
-                  تسجيل الدخول
+                  تسجي�� الدخول
                 </Button>
               </Link>
               <Link to="/signup">
