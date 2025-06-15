@@ -37,7 +37,7 @@ export default function ExploreProjects() {
       id: 1,
       title: "نظام إدارة المكتبات الذكي",
       description:
-        "نظام متطور لإدارة المكتبات الجامعية باستخدام تقنيات الذكاء الاصطناعي مع واجهة مستخدم حديثة وقاعدة بيانات متقدمة",
+        "نظام متطور لإدارة المكتبات الجامعية باستخدام تقنيات الذكاء الاصطناعي مع واجهة مستخدم حدي��ة وقاعدة بيانات متقدمة",
       author: "سارة أحمد محمد",
       university: "جامعة الملك سعود",
       major: "علوم الحاسب",
@@ -182,10 +182,10 @@ export default function ExploreProjects() {
             {/* University Filter */}
             <Select onValueChange={setSelectedUniversity}>
               <SelectTrigger>
-                <SelectValue placeholder="��لجامعة" />
+                <SelectValue placeholder="الجامعة" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">جميع الجامعات</SelectItem>
+                <SelectItem value="all-universities">جميع الجامعات</SelectItem>
                 {universities.map((university) => (
                   <SelectItem
                     key={university}
@@ -204,7 +204,7 @@ export default function ExploreProjects() {
                 <SelectValue placeholder="التخصص" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">جميع التخصصات</SelectItem>
+                <SelectItem value="all-majors">جميع التخصصات</SelectItem>
                 {majors.map((major) => (
                   <SelectItem key={major} value={major} className="text-right">
                     {major}
@@ -219,7 +219,7 @@ export default function ExploreProjects() {
                 <SelectValue placeholder="السنة" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">جميع السنوات</SelectItem>
+                <SelectItem value="all-years">جميع السنوات</SelectItem>
                 {years.map((year) => (
                   <SelectItem key={year} value={year} className="text-right">
                     {year}
