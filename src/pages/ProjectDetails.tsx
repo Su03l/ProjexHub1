@@ -21,9 +21,6 @@ import {
   ArrowRight,
   Send,
   ThumbsUp,
-  CheckCircle,
-  AlertCircle,
-  Lightbulb,
 } from "lucide-react";
 
 export default function ProjectDetails() {
@@ -38,7 +35,7 @@ export default function ProjectDetails() {
     title: "نظام إدارة المكتبات الذكي",
     description: `نظام متطور وشامل لإدارة المكتبات الجامعية يعتمد على أحدث تقنيات الذكاء الاصطناعي. يهدف المشروع إلى تحسين تجربة المستخدمين في المكتبات من خلال توفير واجهة حديثة وسهلة الاستخدام، مع إمكانيات بحث ذكية وتوصيات شخصية للكتب والمراجع.
 
-يتضمن النظام ميزات متقدمة مثل إدارة المخزون بالذكاء الاصطناعي، نظام حجز إلكتروني متطور، وتحليلات مفصلة لاستخد��م المكتبة. كما يدعم النظام تقنيات الواقع المعزز لمساعدة المستخدمين في العثور على الكتب داخل المكتبة.`,
+يتضمن النظام ميزات متقدمة مثل إدارة المخزون بالذكاء الاصطناعي، نظام حجز إلكتروني متطور، وتحليلات مفصلة لاستخدام المكتبة. كما يدعم النظام تقنيات الواقع المعزز لمساعدة المستخدمين في العثور على الكتب داخل المكتبة.`,
     author: "سارة أحمد محمد",
     university: "جامعة الملك سعود",
     major: "علوم الحاسب",
@@ -65,25 +62,6 @@ export default function ProjectDetails() {
       },
       { name: "فيديو الشرح", url: "https://youtube.com", icon: Play },
     ],
-    aiAnalysis: {
-      strengths: [
-        "استخدام تقنيات حديثة ومتطورة",
-        "واجهة مستخدم بديهية وسهلة الاستخدام",
-        "تطبيق مبادئ الذكاء الاصطناعي بشكل فعال",
-        "توثيق شامل ومفصل للمشروع",
-      ],
-      weaknesses: [
-        "يمكن تحسين أداء قاعدة البيانات",
-        "الحاجة لمزيد من اختبارات الأمان",
-        "واجهة الإدارة تحتاج تطوير إضافي",
-      ],
-      suggestions: [
-        "إضافة نظام إشعارات فورية",
-        "تطوير تطبيق محمول مصاحب",
-        "تحسين خوارزميات التوصية",
-        "إضافة ميزة التصدير لصيغ متعددة",
-      ],
-    },
   };
 
   const comments = [
@@ -132,7 +110,7 @@ export default function ProjectDetails() {
         {/* Breadcrumb */}
         <div className="flex items-center space-x-2 space-x-reverse mb-6 text-sm text-gray-500">
           <Link to="/" className="hover:text-primary-600">
-            الرئيسية
+            ال��ئيسية
           </Link>
           <span>/</span>
           <Link to="/explore" className="hover:text-primary-600">
@@ -241,73 +219,6 @@ export default function ProjectDetails() {
                     {paragraph}
                   </p>
                 ))}
-              </div>
-            </Card>
-
-            {/* AI Analysis */}
-            <Card className="gradient-card p-6">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center">
-                <Lightbulb className="w-6 h-6 ml-2 text-accent-500" />
-                تحليل الذكاء الاصطناعي
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Strengths */}
-                <div>
-                  <h3 className="font-semibold text-green-600 dark:text-green-400 mb-3 flex items-center">
-                    <CheckCircle className="w-4 h-4 ml-1" />
-                    نقاط القوة
-                  </h3>
-                  <ul className="space-y-2">
-                    {project.aiAnalysis.strengths.map((strength, index) => (
-                      <li
-                        key={index}
-                        className="text-sm text-gray-600 dark:text-gray-300 flex items-start"
-                      >
-                        <span className="w-2 h-2 bg-green-500 rounded-full mt-2 ml-2 flex-shrink-0"></span>
-                        {strength}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Weaknesses */}
-                <div>
-                  <h3 className="font-semibold text-orange-600 dark:text-orange-400 mb-3 flex items-center">
-                    <AlertCircle className="w-4 h-4 ml-1" />
-                    نقاط التحسين
-                  </h3>
-                  <ul className="space-y-2">
-                    {project.aiAnalysis.weaknesses.map((weakness, index) => (
-                      <li
-                        key={index}
-                        className="text-sm text-gray-600 dark:text-gray-300 flex items-start"
-                      >
-                        <span className="w-2 h-2 bg-orange-500 rounded-full mt-2 ml-2 flex-shrink-0"></span>
-                        {weakness}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Suggestions */}
-                <div>
-                  <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-3 flex items-center">
-                    <Lightbulb className="w-4 h-4 ml-1" />
-                    اقتراحات التطوير
-                  </h3>
-                  <ul className="space-y-2">
-                    {project.aiAnalysis.suggestions.map((suggestion, index) => (
-                      <li
-                        key={index}
-                        className="text-sm text-gray-600 dark:text-gray-300 flex items-start"
-                      >
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 ml-2 flex-shrink-0"></span>
-                        {suggestion}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             </Card>
 

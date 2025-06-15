@@ -24,13 +24,15 @@ import {
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
     university: "",
     major: "",
-    year: "",
+    educationLevel: "",
+    isCurrentlyStudying: "",
   });
 
   const saudiUniversities = [
@@ -50,6 +52,8 @@ export default function SignUp() {
     "جامعة الحدود الشمالية",
     "جامعة الجوف",
     "جامعة حائل",
+    "جامعة تبوك",
+    "جامعة القصيم",
     "جامعة الأميرة نورة بنت عبدالرحمن",
     "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية",
     "جامعة الفيصل",
@@ -61,11 +65,26 @@ export default function SignUp() {
     "الجامعة السعودية الإلكترونية",
     "جامعة الأمير محمد بن فهد",
     "جامعة دار العلوم",
-    "كلية الأمير سلطان العسكرية للعلوم الصحية",
     "جامعة الملك عبدالله للعلوم والتقنية",
+    "كلية الأمير سلطان العسكرية للعلوم الصحية",
+    "جامعة الأمير سلطان",
+    "جامعة الأمير مقرن",
+    "جامعة الأمير فهد بن سلطان",
+    "كليات الريان",
+    "كليات الغد الدولية للعلوم الصحية",
+    "جامعة اليمامة",
+    "جامعة رياض العلم",
+    "كليات الفارابي",
+    "جامعة العلوم والتقنية",
+    "كليات عنيزة",
+    "جامعة المعرفة",
+    "جامعة الأعمال والتكنولوجيا",
+    "الكلية التقنية العليا",
+    "معهد الإدارة العامة",
   ];
 
   const majors = [
+    // Computer Science & IT
     "علوم الحاسب",
     "هندسة البرمجيات",
     "هندسة الحاسب",
@@ -85,53 +104,222 @@ export default function SignUp() {
     "إدارة الأعمال التقنية",
     "تصميم تجربة المستخدم",
     "الجرافيك والوسائط المتعددة",
+
+    // Engineering
     "هندسة الطيران",
     "الهندسة المدنية",
     "الهندسة الكهربائية",
     "الهندسة الميكانيكية",
     "الهندسة الكيميائية",
     "الهندسة الصناعية",
+    "هندسة البترول",
+    "هندسة المواد",
+    "هندسة البيئة",
+    "هندسة التعدين",
+    "هندسة الطاقة المتجددة",
+    "هندسة الاتصالات",
+    "هندسة الإلكترونيات",
+    "هندسة التحكم",
+    "هندسة الطيران والفضاء",
+    "هندسة المياه والبيئة",
+    "هندسة الأغذية",
+    "هندسة الزراعة",
+    "هندسة الغابات",
+    "هندسة المساحة",
+
+    // Medical Sciences
     "الطب",
     "طب الأسنان",
     "الصيدلة",
     "التمريض",
     "العلوم الطبية التطبيقية",
+    "العلاج الطبيعي",
+    "تقنية الأشعة",
+    "المختبرات الطبية",
+    "التغذية الإكلينيكية",
+    "الصحة العامة",
+    "إدارة المعلومات الصحية",
+    "الطب البيطري",
+    "طب العيون",
+    "طب الأطفال",
+    "طب النساء والولادة",
+    "الجراحة",
+    "الطب النفسي",
+    "طب الطوارئ",
+    "طب الأسرة",
+    "الطب الباطني",
+
+    // Sciences
     "الفيزياء",
     "الكيمياء",
     "الأحياء",
     "الرياضيات",
     "الإحصاء",
+    "الجيولوجيا",
+    "الجغرافيا",
+    "علوم البحار",
+    "علوم الأرض",
+    "علوم الفضاء",
+    "البيولوجيا الجزيئية",
+    "الكيمياء الحيوية",
+    "الفيزياء الحيوية",
+    "علوم البيئة",
+    "علوم المناخ",
+    "علوم الطعام",
+    "علوم الحياة",
+    "النانو تكنولوجي",
+    "العلوم النووية",
+    "علوم المختبرات",
+
+    // Business & Management
     "إدارة الأعمال",
     "المحاسبة",
     "التمويل",
     "التسويق",
     "الموارد البشرية",
+    "إدارة العمليات",
+    "ريادة الأعمال",
+    "التجارة الدولية",
+    "إدارة السلسلة التوريدية",
+    "إدارة المشاريع",
+    "إدارة الجودة",
+    "إدارة المخاطر",
+    "الاقتصاد",
+    "الاقتصاد الإسلامي",
+    "المصرفية الإسلامية",
+    "التأمين",
+    "الاستثمار",
+    "التجارة الإلكترونية",
+    "إدارة الفنادق",
+    "إدارة السياحة",
+
+    // Law & Political Science
     "القانون",
+    "الشريعة الإسلامية",
     "العلوم السياسية",
     "العلاقات الدولية",
+    "الدبلوماسية",
+    "الأمن الوطني",
+    "العدالة الجنائية",
+    "القانون التجاري",
+    "القانون الدولي",
+    "حقوق الإنسان",
+
+    // Media & Communication
     "الإعلام والاتصال",
     "الصحافة",
+    "الإذاعة والتلفزيون",
+    "العلاقات العامة",
+    "الإعلان",
+    "الإنتاج الإعلامي",
+    "الإعلام الرقمي",
+    "التصوير الفوتوغرافي",
+    "المونتاج والإخراج",
+    "الإعلام الرياضي",
+
+    // Arts & Design
     "التصميم الجرافيكي",
+    "التصميم الداخلي",
+    "تصميم الأزياء",
+    "الفنون الجميلة",
+    "النحت",
+    "الرسم",
+    "الخط العربي",
+    "التصوير الفوتوغرافي",
+    "التصميم الصناعي",
+    "تصميم المجوهرات",
+
+    // Architecture & Planning
     "العمارة",
     "التخطيط العمراني",
+    "هندسة المناظر الطبيعية",
+    "العمارة الداخلية",
+    "التصميم المعماري",
+    "إدارة الإنشاءات",
+    "تقنية البناء",
+    "المساحة",
+    "التخطيط الإقليمي",
+    "إدارة المشاريع الإنشائية",
+
+    // Social Sciences
     "علم النفس",
     "علم الاجتماع",
     "الخدمة الاجتماعية",
     "التاريخ",
     "الجغرافيا",
+    "الأنثروبولوجيا",
+    "علم الآثار",
+    "الدراسات الإسلامية",
+    "الدراسات العربية",
+    "الفلسفة",
+
+    // Languages & Literature
     "الأدب العربي",
     "اللغة الإنجليزية",
+    "اللغة الفرنسية",
+    "اللغة الألمانية",
+    "اللغة الإسبانية",
+    "اللغة الصينية",
+    "اللغة اليابانية",
     "الترجمة",
+    "اللسانيات",
+    "الأدب المقارن",
+
+    // Education
+    "التربية وعلم النفس",
+    "المناهج وطرق التدريس",
+    "الإدارة التربوية",
+    "التربية الخاصة",
+    "تقنيات التعليم",
+    "التربية الفنية",
+    "التربية البدنية",
+    "رياض الأطفال",
+    "التعليم الابتدائي",
+    "التربية الإسلامية",
+
+    // Agriculture & Food
+    "الزراعة",
+    "الإنتاج النباتي",
+    "الإنتاج الحيواني",
+    "علوم التربة",
+    "وقاية النبات",
+    "الاقتصاد الزراعي",
+    "الإرشاد الزراعي",
+    "هندسة الري",
+    "تقنية الغذاء",
+    "علوم الألبان",
+
+    // Sports & Physical Education
+    "التربية البدنية",
+    "علوم الرياضة",
+    "الطب الرياضي",
+    "الإدارة الرياضية",
+    "التدريب الرياضي",
+    "فسيولوجيا الرياضة",
+    "النشاط البدني المكيف",
+    "الترويح الرياضي",
+    "علم النفس الرياضي",
+    "الإعلام الرياضي",
+
+    // Public Administration
+    "الإدارة العامة",
+    "إدارة الموارد البشرية",
+    "إدارة المالية العامة",
+    "السياسات العامة",
+    "التنمية الإدارية",
+    "إدارة المدن",
+    "الأمن العام",
+    "إدارة الكوارث",
+    "الإدارة الصحية",
+    "إدارة التعليم",
   ];
 
-  const academicYears = [
-    "السنة الأولى",
-    "السنة الثانية",
-    "السنة الثالثة",
-    "السنة الرابعة",
-    "السنة الخامسة",
-    "الماجستير",
-    "الدكتوراه",
+  const educationLevels = [
+    "بكالوريوس",
+    "ماجستير",
+    "دكتو��اه",
+    "دبلوم عالي",
+    "دبلوم",
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -154,26 +342,49 @@ export default function SignUp() {
 
         <Card className="gradient-card p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Full Name */}
-            <div className="space-y-2">
-              <Label
-                htmlFor="fullName"
-                className="flex items-center space-x-2 space-x-reverse"
-              >
-                <User className="w-4 h-4" />
-                <span>الاسم الكامل</span>
-              </Label>
-              <Input
-                id="fullName"
-                type="text"
-                placeholder="أدخل اسمك الكامل"
-                value={formData.fullName}
-                onChange={(e) =>
-                  setFormData({ ...formData, fullName: e.target.value })
-                }
-                className="text-right"
-                required
-              />
+            {/* First Name & Last Name */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label
+                  htmlFor="firstName"
+                  className="flex items-center space-x-2 space-x-reverse"
+                >
+                  <User className="w-4 h-4" />
+                  <span>الاسم الأول</span>
+                </Label>
+                <Input
+                  id="firstName"
+                  type="text"
+                  placeholder="أدخل اسمك الأول"
+                  value={formData.firstName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, firstName: e.target.value })
+                  }
+                  className="text-right"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label
+                  htmlFor="lastName"
+                  className="flex items-center space-x-2 space-x-reverse"
+                >
+                  <User className="w-4 h-4" />
+                  <span>الاسم الأخير</span>
+                </Label>
+                <Input
+                  id="lastName"
+                  type="text"
+                  placeholder="أدخل اسمك الأخير"
+                  value={formData.lastName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lastName: e.target.value })
+                  }
+                  className="text-right"
+                  required
+                />
+              </div>
             </div>
 
             {/* Email */}
@@ -311,26 +522,55 @@ export default function SignUp() {
               </Select>
             </div>
 
-            {/* Academic Year */}
+            {/* Education Level */}
             <div className="space-y-2">
               <Label className="flex items-center space-x-2 space-x-reverse">
                 <GraduationCap className="w-4 h-4" />
-                <span>السنة الدراسية</span>
+                <span>المرحلة الدراسية</span>
               </Label>
               <Select
                 onValueChange={(value) =>
-                  setFormData({ ...formData, year: value })
+                  setFormData({ ...formData, educationLevel: value })
                 }
               >
                 <SelectTrigger className="text-right">
-                  <SelectValue placeholder="اختر سنتك الدراسية" />
+                  <SelectValue placeholder="اختر مرحلتك الدراسية" />
                 </SelectTrigger>
                 <SelectContent>
-                  {academicYears.map((year) => (
-                    <SelectItem key={year} value={year} className="text-right">
-                      {year}
+                  {educationLevels.map((level) => (
+                    <SelectItem
+                      key={level}
+                      value={level}
+                      className="text-right"
+                    >
+                      {level}
                     </SelectItem>
                   ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Currently Studying */}
+            <div className="space-y-2">
+              <Label className="flex items-center space-x-2 space-x-reverse">
+                <BookOpen className="w-4 h-4" />
+                <span>هل أنت ما زلت تدر��؟</span>
+              </Label>
+              <Select
+                onValueChange={(value) =>
+                  setFormData({ ...formData, isCurrentlyStudying: value })
+                }
+              >
+                <SelectTrigger className="text-right">
+                  <SelectValue placeholder="اختر حالتك الدراسية" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="yes" className="text-right">
+                    نعم، ما زلت أدرس
+                  </SelectItem>
+                  <SelectItem value="no" className="text-right">
+                    لا، تخرجت
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -346,7 +586,7 @@ export default function SignUp() {
             {/* Login Link */}
             <div className="text-center">
               <span className="text-gray-600 dark:text-gray-400">
-                لديك حساب بالفعل؟{" "}
+                لديك حساب با��فعل؟{" "}
               </span>
               <Link
                 to="/login"

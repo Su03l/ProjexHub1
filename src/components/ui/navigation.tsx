@@ -24,7 +24,9 @@ export function Navigation() {
     { href: "/explore", label: "تصفح المشاريع", icon: Search },
     { href: "/upload", label: "رفع مشروع", icon: Upload },
     { href: "/competition", label: "المسابقة", icon: Trophy },
-    { href: "/messages", label: "الرسائل", icon: MessageCircle },
+    ...(isLoggedIn
+      ? [{ href: "/messages", label: "الرسائل", icon: MessageCircle }]
+      : []),
   ];
 
   return (
