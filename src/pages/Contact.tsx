@@ -6,7 +6,7 @@ import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 export default function Contact() {
   const handleWhatsAppClick = () => {
     const phoneNumber = "966531608085"; // رقم الواتساب الرسمي
-    const message = "مرح��ا، أريد التواصل معكم حول منصة ProjexHub";
+    const message = "مرحباً، أريد التواصل معكم حول منصة ProjexHub";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };

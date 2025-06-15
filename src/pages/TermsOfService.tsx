@@ -9,7 +9,7 @@ export default function TermsOfService() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gradient mb-4">
-            شروط الاستخد��م
+            شروط الاستخدام
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400">
             الشروط والأحكام الخاصة باستخدام منصة ProjexHub
@@ -66,7 +66,7 @@ export default function TermsOfService() {
             <div className="text-gray-600 dark:text-gray-400 space-y-3">
               <p>• المنصة مخصصة للطلاب الجامعيين في المملكة العربية السعودية</p>
               <p>
-                • يجب أن تكون المشاريع المرفوعة أعمال أصلية أو بإذن من أصحابها
+                • يجب أن تكون المشاريع المرفوعة أعمال أصلية أو بإذن من ��صحابها
               </p>
               <p>• يُمنع رفع محتوى مخالف للنظام العام أو الآداب العامة</p>
               <p>• يُمنع استخدام المنصة لأغراض تجارية دون إذن مسبق</p>
@@ -141,7 +141,7 @@ export default function TermsOfService() {
             <div className="text-gray-600 dark:text-gray-400 space-y-3">
               <p>• يمكنك إنهاء حسابك في أي وقت من خلال إعدادات الحساب</p>
               <p>• نحتفظ بالحق في إيقاف أو حذف الحسابات المخالفة</p>
-              <p>• عند إنهاء الحساب، قد نحتفظ ببعض البيانات لأغراض قانونية</p>
+              <p>• عند إنهاء الحساب، قد نحتفظ ببع�� البيانات لأغراض قانونية</p>
               <p>• المشاريع المنشورة قد تبقى متاحة بعد حذف الحساب</p>
             </div>
           </Card>
