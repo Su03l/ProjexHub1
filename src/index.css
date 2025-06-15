@@ -57,14 +57,39 @@
   body {
     @apply bg-background text-foreground font-arabic;
     direction: rtl;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   html {
     direction: rtl;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   [dir="ltr"] {
     direction: ltr;
+  }
+
+  /* Ensure full width on all screen sizes */
+  .w-full {
+    width: 100% !important;
+  }
+
+  /* Mobile responsive improvements */
+  @media (max-width: 768px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
 }
 
