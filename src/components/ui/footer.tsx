@@ -26,7 +26,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2 space-x-reverse">
               <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <span className="text-white font-bold">P</span>
+                <span className="text-white font-bold text-sm">PH</span>
               </div>
               <span className="text-xl font-bold text-gradient">ProjexHub</span>
             </div>
