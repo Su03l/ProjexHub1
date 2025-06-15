@@ -262,7 +262,7 @@ export default function UploadProject() {
           <Card className="gradient-card p-8 text-center max-w-md mx-4">
             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              تم نشر المش��وع بنجاح!
+              تم نشر المشروع بنجاح!
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
               مشروعك متاح الآن للمجتمع ولا يحتاج إلى مراجعة
@@ -445,7 +445,7 @@ export default function UploadProject() {
                 <div className="mt-2 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center">
                   <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    اسحب الملفات هنا أو انقر للا��تيار
+                    اسحب الملفات هنا أو انقر للاختيار
                   </p>
                   <input
                     type="file"
