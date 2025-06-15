@@ -76,7 +76,7 @@ export function Navigation() {
             <div className="hidden md:flex items-center space-x-2 space-x-reverse">
               <Link to="/login">
                 <Button variant="ghost" size="sm" onClick={handleLogin}>
-                  تسجي�� الدخول
+                  تسجيل الدخول
                 </Button>
               </Link>
               <Link to="/signup">
