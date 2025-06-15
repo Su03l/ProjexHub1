@@ -467,7 +467,7 @@ export default function ExploreProjects() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                     {project.featured && (
                       <div className="absolute top-3 right-3 bg-accent-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                        ��ميز
+                        مميز
                       </div>
                     )}
                     <div className="absolute bottom-3 left-3 flex space-x-2 space-x-reverse">
@@ -591,7 +591,7 @@ export default function ExploreProjects() {
                 مجتمع نشط
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                انضم إلى مجتمع متنامي من الطلاب والأكاديميين المبدعين
+                انضم إلى مجتمع متنامي من الطلاب والأ��اديميين المبدعين
               </p>
             </Card>
 
