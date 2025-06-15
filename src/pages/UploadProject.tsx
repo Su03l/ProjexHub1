@@ -56,7 +56,7 @@ export default function UploadProject() {
     "الروبوتات",
     "البلوك تشين",
     "التجارة الإلكترونية",
-    "إدارة الأعمال التقنية",
+    "��دارة الأعمال التقنية",
     "تصميم تجربة المستخدم",
     "الجرافيك والوسائط المتعددة",
 
@@ -136,7 +136,7 @@ export default function UploadProject() {
     "الترجمة",
   ];
 
-  const academicYears = ["2024", "2023", "2022", "2021", "2020"];
+  const academicYears = ["2025", "2024", "2023", "2022", "2021", "2020"];
 
   const skillsList = [
     "React",
@@ -292,7 +292,7 @@ export default function UploadProject() {
             {/* Basic Information */}
             <Card className="gradient-card p-6">
               <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-                المعلومات الأساسية
+                المعلومات الأس��سية
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
