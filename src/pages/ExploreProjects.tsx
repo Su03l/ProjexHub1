@@ -51,7 +51,7 @@ export default function ExploreProjects() {
     "جامعة الأمير محمد بن فهد",
     "جامعة دار العلوم",
     "جامعة الملك عبدالله للعلوم والتقنية",
-    "كلية الأمير سلطان العسكرية للعلوم ال��حية",
+    "كلية الأمير سلطان العسكرية للعلوم الصحية",
     "جامعة الأمير سلطان",
     "جامعة الأمير مقرن",
     "جامعة الأمير فهد بن سلطان",
@@ -285,7 +285,7 @@ export default function ExploreProjects() {
     "النشاط البدني المكيف",
     "الترويح الرياضي",
     "علم النفس الرياضي",
-    "الإعلام الرياضي",
+    "الإعلام الر��اضي",
 
     // Public Administration
     "الإدارة العامة",
@@ -349,7 +349,7 @@ export default function ExploreProjects() {
             تصفح المشاريع
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            اكتشف مشاريع التخرج المبدعة من طلاب الجامعات السعودية
+            اكتشف مشاريع التخرج المبدعة من ط��اب الجامعات السعودية
           </p>
         </div>
 
@@ -600,10 +600,10 @@ export default function ExploreProjects() {
                 <BookOpen className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                مشاريع متنوعة
+                ��شاريع متنوعة
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                ستجد مشاريع من جميع التخصصات والجامعات السعود��ة
+                ستجد مشاريع من جميع التخصصات والجامعات السعودية
               </p>
             </Card>
           </div>
