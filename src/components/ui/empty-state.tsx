@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from './card';
 import { Button } from './button';
-import { LucideIcon } from 'lucide-react';
+import { DivideIcon as LucideIcon } from 'lucide-react';
 
 interface EmptyStateProps {
   icon: LucideIcon;
