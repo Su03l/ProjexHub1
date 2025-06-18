@@ -4,6 +4,7 @@ import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
+import { LoadingSpinner } from "../components/ui/loading-spinner";
 import {
   Select,
   SelectContent,
@@ -18,12 +19,13 @@ import {
   ExternalLink,
   X,
   CheckCircle,
-  Loader2,
   Video,
 } from "lucide-react";
+import { ACADEMIC_MAJORS, ACADEMIC_YEARS, TECHNICAL_SKILLS } from "@/lib/constants";
+import { ProjectFormData } from "@/lib/types";
 
 export default function UploadProject() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ProjectFormData>({
     title: "",
     description: "",
     major: "",
@@ -34,194 +36,81 @@ export default function UploadProject() {
     videoUrl: "",
   });
 
-  const [files, setFiles] = useState([]);
-  const [selectedSkills, setSelectedSkills] = useState([]);
-  const [uploadStatus, setUploadStatus] = useState(""); // "", "uploading", "success"
+  const [files, setFiles] = useState<File[]>([]);
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [uploadStatus, setUploadStatus] = useState<"" | "uploading" | "success">("");
+  const [errors, setErrors] = useState<Partial<ProjectFormData>>({});
 
-  const majors = [
-    // Computer Science & IT
-    "علوم الحاسب",
-    "هندسة البرمجيات",
-    "هندسة الحاسب",
-    "نظم المعلومات",
-    "تقنية المعلومات",
-    "الذكاء الاصطناعي",
-    "الأمن السيبراني",
-    "علوم البيانات",
-    "هندسة الشبكات",
-    "تطوير الألعاب",
-    "الحوسبة السحابية",
-    "إنترنت الأشياء",
-    "الواقع المعزز والافتراضي",
-    "الروبوتات",
-    "البلوك تشين",
-    "التجارة الإلكترونية",
-    "إدارة الأعمال التقنية",
-    "تصميم تجربة المستخدم",
-    "الجرافيك والوسائط المتعددة",
+  const validateForm = (): boolean => {
+    const newErrors: Partial<ProjectFormData> = {};
 
-    // Engineering
-    "هندسة الطيران",
-    "الهندسة المدنية",
-    "الهندسة الكهربائية",
-    "الهندسة الميكانيكية",
-    "الهندسة الكيميائية",
-    "الهندسة الصناعية",
-    "هندسة البترول",
-    "هندسة المواد",
-    "هندسة البيئة",
-    "هندسة التعدين",
-    "هندسة الطاقة المتجددة",
-    "هندسة الاتصالات",
-    "هندسة الإلكترونيات",
-    "هندسة التحكم",
-    "هندسة الطيران والفضاء",
-    "هندسة المياه والبيئة",
-    "هندسة الأغذية",
-    "هندسة الزراعة",
-    "هندسة الغابات",
-    "هندسة المساحة",
+    if (!formData.title.trim()) {
+      newErrors.title = "عنوان المشروع مطلوب";
+    }
 
-    // Medical Sciences
-    "الطب",
-    "طب الأسنان",
-    "الصيدلة",
-    "التمريض",
-    "العلوم الطبية التطبيقية",
-    "العلاج الطبيعي",
-    "تقنية الأشعة",
-    "المختبرات الطبية",
-    "التغذية الإكلينيكية",
-    "الصحة العامة",
-    "إدارة المعلومات الصحية",
-    "الطب البيطري",
+    if (!formData.description.trim()) {
+      newErrors.description = "وصف المشروع مطلوب";
+    } else if (formData.description.length < 50) {
+      newErrors.description = "وصف المشروع يجب أن يكون 50 حرف على الأقل";
+    }
 
-    // Sciences
-    "الفيزياء",
-    "الكيمياء",
-    "الأحياء",
-    "الرياضيات",
-    "الإحصاء",
-    "الجيولوجيا",
-    "الجغرافيا",
-    "علوم البحار",
-    "علوم الأرض",
-    "علوم الفضاء",
+    if (!formData.major) {
+      newErrors.major = "التخصص مطلوب";
+    }
 
-    // Business & Management
-    "إدارة الأعمال",
-    "المحاسبة",
-    "التمويل",
-    "التسويق",
-    "الموارد البشرية",
-    "إدارة العمليات",
-    "ريادة الأعمال",
-    "التجارة الدولية",
+    if (!formData.year) {
+      newErrors.year = "سنة التخرج مطلوبة";
+    }
 
-    // Others
-    "القانون",
-    "الشريعة الإسلامية",
-    "العلوم السياسية",
-    "العلاقات الدولية",
-    "الإعلام والاتصال",
-    "الصحافة",
-    "التصميم الجرافيكي",
-    "العمارة",
-    "التخطيط العمراني",
-    "علم النفس",
-    "علم الاجتماع",
-    "التاريخ",
-    "الأدب العربي",
-    "اللغة الإنجليزية",
-    "الترجمة",
-  ];
+    if (selectedSkills.length === 0) {
+      newErrors.skills = "يجب اختيار مهارة واحدة على الأقل";
+    }
 
-  const academicYears = ["2025", "2024", "2023", "2022", "2021", "2020"];
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-  const skillsList = [
-    "React",
-    "Vue.js",
-    "Angular",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "MySQL",
-    "PostgreSQL",
-    "Python",
-    "Django",
-    "Flask",
-    "Java",
-    "Spring Boot",
-    "C#",
-    ".NET",
-    "PHP",
-    "Laravel",
-    "Flutter",
-    "React Native",
-    "Swift",
-    "Kotlin",
-    "Unity",
-    "Unreal Engine",
-    "TensorFlow",
-    "PyTorch",
-    "Scikit-learn",
-    "OpenCV",
-    "NLP",
-    "Machine Learning",
-    "Docker",
-    "Kubernetes",
-    "AWS",
-    "Azure",
-    "Google Cloud",
-    "Git",
-    "GitHub",
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "TypeScript",
-    "Sass",
-    "Bootstrap",
-    "Tailwind CSS",
-    "Figma",
-    "Adobe XD",
-    "Photoshop",
-    "Illustrator",
-  ];
-
-  const handleSkillSelect = (skill) => {
+  const handleSkillSelect = (skill: string) => {
     if (!selectedSkills.includes(skill)) {
       setSelectedSkills([...selectedSkills, skill]);
+      setFormData({ ...formData, skills: [...selectedSkills, skill] });
     }
   };
 
-  const removeSkill = (skillToRemove) => {
-    setSelectedSkills(
-      selectedSkills.filter((skill) => skill !== skillToRemove),
-    );
+  const removeSkill = (skillToRemove: string) => {
+    const updatedSkills = selectedSkills.filter((skill) => skill !== skillToRemove);
+    setSelectedSkills(updatedSkills);
+    setFormData({ ...formData, skills: updatedSkills });
   };
 
-  const handleFileUpload = (e) => {
-    const uploadedFiles = Array.from(e.target.files);
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const uploadedFiles = Array.from(e.target.files || []);
     setFiles([...files, ...uploadedFiles]);
   };
 
-  const removeFile = (indexToRemove) => {
+  const removeFile = (indexToRemove: number) => {
     setFiles(files.filter((_, index) => index !== indexToRemove));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setUploadStatus("uploading");
 
-    // Simulate upload process
-    setTimeout(() => {
+    try {
+      // Simulate upload process
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
       setUploadStatus("success");
       console.log("Project submitted:", { formData, files, selectedSkills });
 
       // Reset form after success
       setTimeout(() => {
         setUploadStatus("");
-        // Reset form data
         setFormData({
           title: "",
           description: "",
@@ -235,7 +124,19 @@ export default function UploadProject() {
         setFiles([]);
         setSelectedSkills([]);
       }, 3000);
-    }, 2000);
+    } catch (error) {
+      console.error("Upload error:", error);
+      setUploadStatus("");
+      alert("حدث خطأ أثناء رفع المشروع. يرجى المحاولة مرة أخرى.");
+    }
+  };
+
+  const updateFormData = (field: keyof ProjectFormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    }
   };
 
   // Upload Status Notification
@@ -244,8 +145,8 @@ export default function UploadProject() {
       return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <Card className="gradient-card p-8 text-center max-w-md mx-4">
-            <Loader2 className="w-16 h-16 text-primary-500 mx-auto mb-4 animate-spin" />
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+            <LoadingSpinner size="lg" />
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 mt-4">
               جاري رفع المشروع...
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
@@ -304,27 +205,27 @@ export default function UploadProject() {
                     type="text"
                     placeholder="أدخل عنوان مشروعك"
                     value={formData.title}
-                    onChange={(e) =>
-                      setFormData({ ...formData, title: e.target.value })
-                    }
+                    onChange={(e) => updateFormData("title", e.target.value)}
                     className="text-right"
-                    required
+                    disabled={uploadStatus === "uploading"}
                   />
+                  {errors.title && (
+                    <p className="text-sm text-red-500 mt-1">{errors.title}</p>
+                  )}
                 </div>
 
                 {/* Major */}
                 <div>
                   <Label>التخصص *</Label>
                   <Select
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, major: value })
-                    }
+                    onValueChange={(value) => updateFormData("major", value)}
+                    disabled={uploadStatus === "uploading"}
                   >
                     <SelectTrigger className="text-right">
                       <SelectValue placeholder="اختر تخصصك" />
                     </SelectTrigger>
                     <SelectContent>
-                      {majors.map((major) => (
+                      {ACADEMIC_MAJORS.map((major) => (
                         <SelectItem
                           key={major}
                           value={major}
@@ -335,21 +236,23 @@ export default function UploadProject() {
                       ))}
                     </SelectContent>
                   </Select>
+                  {errors.major && (
+                    <p className="text-sm text-red-500 mt-1">{errors.major}</p>
+                  )}
                 </div>
 
                 {/* Academic Year */}
                 <div>
                   <Label>سنة التخرج *</Label>
                   <Select
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, year: value })
-                    }
+                    onValueChange={(value) => updateFormData("year", value)}
+                    disabled={uploadStatus === "uploading"}
                   >
                     <SelectTrigger className="text-right">
                       <SelectValue placeholder="اختر السنة" />
                     </SelectTrigger>
                     <SelectContent>
-                      {academicYears.map((year) => (
+                      {ACADEMIC_YEARS.map((year) => (
                         <SelectItem
                           key={year}
                           value={year}
@@ -360,6 +263,9 @@ export default function UploadProject() {
                       ))}
                     </SelectContent>
                   </Select>
+                  {errors.year && (
+                    <p className="text-sm text-red-500 mt-1">{errors.year}</p>
+                  )}
                 </div>
 
                 {/* Project Description */}
@@ -369,13 +275,14 @@ export default function UploadProject() {
                     id="description"
                     placeholder="اكتب وصفاً مفصلاً عن مشروعك، أهدافه، والمشاكل التي يحلها..."
                     value={formData.description}
-                    onChange={(e) =>
-                      setFormData({ ...formData, description: e.target.value })
-                    }
+                    onChange={(e) => updateFormData("description", e.target.value)}
                     className="text-right"
                     rows={6}
-                    required
+                    disabled={uploadStatus === "uploading"}
                   />
+                  {errors.description && (
+                    <p className="text-sm text-red-500 mt-1">{errors.description}</p>
+                  )}
                 </div>
               </div>
             </Card>
@@ -401,6 +308,7 @@ export default function UploadProject() {
                           type="button"
                           onClick={() => removeSkill(skill)}
                           className="mr-2 hover:text-red-500"
+                          disabled={uploadStatus === "uploading"}
                         >
                           <X className="w-4 h-4" />
                         </button>
@@ -412,14 +320,14 @@ export default function UploadProject() {
 
               {/* Skills Selection */}
               <div>
-                <Label>اختر التقنيات المستخدمة:</Label>
+                <Label>اختر التقنيات المستخدمة: *</Label>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 mt-2 max-h-60 overflow-y-auto">
-                  {skillsList.map((skill) => (
+                  {TECHNICAL_SKILLS.map((skill) => (
                     <button
                       key={skill}
                       type="button"
                       onClick={() => handleSkillSelect(skill)}
-                      disabled={selectedSkills.includes(skill)}
+                      disabled={selectedSkills.includes(skill) || uploadStatus === "uploading"}
                       className={`p-2 text-sm rounded-lg border transition-colors ${
                         selectedSkills.includes(skill)
                           ? "bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 border-primary-300"
@@ -430,6 +338,9 @@ export default function UploadProject() {
                     </button>
                   ))}
                 </div>
+                {errors.skills && (
+                  <p className="text-sm text-red-500 mt-1">{errors.skills}</p>
+                )}
               </div>
             </Card>
 
@@ -454,9 +365,15 @@ export default function UploadProject() {
                     onChange={handleFileUpload}
                     className="hidden"
                     id="file-upload"
+                    disabled={uploadStatus === "uploading"}
                   />
                   <Label htmlFor="file-upload">
-                    <Button type="button" variant="outline" asChild>
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      asChild
+                      disabled={uploadStatus === "uploading"}
+                    >
                       <span>اختيار الملفات</span>
                     </Button>
                   </Label>
@@ -483,6 +400,7 @@ export default function UploadProject() {
                           type="button"
                           onClick={() => removeFile(index)}
                           className="text-red-500 hover:text-red-700"
+                          disabled={uploadStatus === "uploading"}
                         >
                           <X className="w-4 h-4" />
                         </button>
@@ -507,10 +425,9 @@ export default function UploadProject() {
                     type="url"
                     placeholder="https://github.com/username/project"
                     value={formData.githubUrl}
-                    onChange={(e) =>
-                      setFormData({ ...formData, githubUrl: e.target.value })
-                    }
+                    onChange={(e) => updateFormData("githubUrl", e.target.value)}
                     className="text-right"
+                    disabled={uploadStatus === "uploading"}
                   />
                 </div>
 
@@ -527,10 +444,9 @@ export default function UploadProject() {
                     type="url"
                     placeholder="https://project-demo.com"
                     value={formData.demoUrl}
-                    onChange={(e) =>
-                      setFormData({ ...formData, demoUrl: e.target.value })
-                    }
+                    onChange={(e) => updateFormData("demoUrl", e.target.value)}
                     className="text-right"
+                    disabled={uploadStatus === "uploading"}
                   />
                 </div>
 
@@ -547,10 +463,9 @@ export default function UploadProject() {
                     type="url"
                     placeholder="https://youtube.com/watch?v=..."
                     value={formData.videoUrl}
-                    onChange={(e) =>
-                      setFormData({ ...formData, videoUrl: e.target.value })
-                    }
+                    onChange={(e) => updateFormData("videoUrl", e.target.value)}
                     className="text-right"
+                    disabled={uploadStatus === "uploading"}
                   />
                 </div>
               </div>
@@ -565,8 +480,8 @@ export default function UploadProject() {
               >
                 {uploadStatus === "uploading" ? (
                   <>
-                    <Loader2 className="w-5 h-5 ml-2 animate-spin" />
-                    جاري الرفع...
+                    <LoadingSpinner size="sm" />
+                    <span className="mr-2">جاري الرفع...</span>
                   </>
                 ) : (
                   <>

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
+import { LoadingSpinner } from "../components/ui/loading-spinner";
 import {
   Select,
   SelectContent,
@@ -20,10 +21,14 @@ import {
   GraduationCap,
   BookOpen,
 } from "lucide-react";
+import { SAUDI_UNIVERSITIES, ACADEMIC_MAJORS, EDUCATION_LEVELS } from "@/lib/constants";
+import { FormData } from "@/lib/types";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     email: "",
@@ -35,298 +40,85 @@ export default function SignUp() {
     isCurrentlyStudying: "",
   });
 
-  const saudiUniversities = [
-    "جامعة الملك سعود",
-    "جامعة الملك عبدالعزيز",
-    "جامعة الملك فهد للبترول والمعادن",
-    "جامعة الملك خالد",
-    "جامعة الملك فيصل",
-    "جامعة الإمام محمد بن سعود الإسلامية",
-    "جامعة أم القرى",
-    "الجامعة الإسلامية بالمدينة المنورة",
-    "جامعة طيبة",
-    "جامعة الطائف",
-    "جامعة جازان",
-    "جامعة نجران",
-    "جامعة الباحة",
-    "جامعة الحدود الشمالية",
-    "جامعة الجوف",
-    "جامعة حائل",
-    "جامعة تبوك",
-    "جامعة القصيم",
-    "جامعة الأميرة نورة بنت عبدالرحمن",
-    "جامعة الملك سعود بن عبدالعزيز للعلوم الصحية",
-    "جامعة الفيصل",
-    "جامعة الأمير سطام بن عبدالعزيز",
-    "جامعة المجمعة",
-    "جامعة شقراء",
-    "جامعة الدمام",
-    "جامعة بيشة",
-    "الجامعة السعودية الإلكترونية",
-    "جامعة الأمير محمد بن فهد",
-    "جامعة دار العلوم",
-    "جامعة الملك عبدالله للعلوم والتقنية",
-    "كلية الأمير سلطان العسكرية للعلوم الصحية",
-    "جامعة الأمير سلطان",
-    "جامعة الأمير مقرن",
-    "جامعة الأمير فهد بن سلطان",
-    "كليات الريان",
-    "كليات الغد الدولية للعلوم الصحية",
-    "جامعة اليمامة",
-    "جامعة رياض العلم",
-    "كليات الفارابي",
-    "جامعة العلوم والتقنية",
-    "كليات عنيزة",
-    "جامعة المعرفة",
-    "جامعة الأعمال والتكنولوجيا",
-    "الكلية التقنية العليا",
-    "معهد الإدارة العامة",
-  ];
+  const [errors, setErrors] = useState<Partial<FormData>>({});
 
-  const majors = [
-    // Computer Science & IT
-    "علوم الحاسب",
-    "هندسة البرمجيات",
-    "هندسة الحاسب",
-    "نظم المعلومات",
-    "تقنية المعلومات",
-    "الذكاء الاصطناعي",
-    "الأمن السيبراني",
-    "علوم البيانات",
-    "هندسة الشبكات",
-    "تطوير الألعاب",
-    "الحوسبة السحابية",
-    "إنترنت الأشياء",
-    "الواقع المعزز والافتراضي",
-    "الروبوتات",
-    "البلوك تشين",
-    "التجارة الإلكترونية",
-    "إدارة الأعمال التقنية",
-    "تصميم تجربة المستخدم",
-    "الجرافيك والوسائط المتعددة",
+  const validateForm = (): boolean => {
+    const newErrors: Partial<FormData> = {};
 
-    // Engineering
-    "هندسة الطيران",
-    "الهندسة المدنية",
-    "الهندسة الكهربائية",
-    "الهندسة الميكانيكية",
-    "الهندسة الكيميائية",
-    "الهندسة الصناعية",
-    "هندسة البترول",
-    "هندسة المواد",
-    "هندسة البيئة",
-    "هندسة التعدين",
-    "هندسة الطاقة المتجددة",
-    "هندسة الاتصالات",
-    "هندسة الإلكترونيات",
-    "هندسة التحكم",
-    "هندسة الطيران والفضاء",
-    "هندسة المياه والبيئة",
-    "هندسة الأغذية",
-    "هندسة الزراعة",
-    "هندسة الغابات",
-    "هندسة المساحة",
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "الاسم الأول مطلوب";
+    }
 
-    // Medical Sciences
-    "الطب",
-    "طب الأسنان",
-    "الصيدلة",
-    "التمريض",
-    "العلوم الطبية التطبيقية",
-    "العلاج الطبيعي",
-    "تقنية الأشعة",
-    "المختبرات الطبية",
-    "التغذية الإكلينيكية",
-    "الصحة العامة",
-    "إدارة المعلومات الصحية",
-    "الطب البيطري",
-    "طب العيون",
-    "طب الأطفال",
-    "طب النساء والولادة",
-    "الجراحة",
-    "الطب النفسي",
-    "طب الطوارئ",
-    "طب الأسرة",
-    "الطب الباطني",
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "الاسم الأخير مطلوب";
+    }
 
-    // Sciences
-    "الفيزياء",
-    "الكيمياء",
-    "الأحياء",
-    "الرياضيات",
-    "الإحصاء",
-    "الجيولوجيا",
-    "الجغرافيا",
-    "علوم البحار",
-    "علوم الأرض",
-    "علوم الفضاء",
-    "البيولوجيا الجزيئية",
-    "الكيمياء الحيوية",
-    "الفيزياء الحيوية",
-    "علوم البيئة",
-    "علوم المناخ",
-    "علوم الطعام",
-    "علوم الحياة",
-    "النانو تكنولوجي",
-    "العلوم النووية",
-    "علوم المختبرات",
+    if (!formData.email.trim()) {
+      newErrors.email = "البريد الإلكتروني مطلوب";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "البريد الإلكتروني غير صحيح";
+    }
 
-    // Business & Management
-    "إدارة الأعمال",
-    "المحاسبة",
-    "التمويل",
-    "التسويق",
-    "الموارد البشرية",
-    "إدارة العمليات",
-    "ريادة الأعمال",
-    "التجارة الدولية",
-    "إدارة السلسلة التوريدية",
-    "إدارة المشاريع",
-    "إدارة الجودة",
-    "إدارة المخاطر",
-    "الاقتصاد",
-    "الاقتصاد الإسلامي",
-    "المصرفية الإسلامية",
-    "التأمين",
-    "الاستثمار",
-    "التجارة الإلكترونية",
-    "إدارة الفنادق",
-    "إدارة السياحة",
+    if (!formData.password) {
+      newErrors.password = "كلمة المرور مطلوبة";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "كلمة المرور يجب أن تكون 6 أحرف على الأقل";
+    }
 
-    // Law & Political Science
-    "القانون",
-    "الشريعة الإسلامية",
-    "العلوم السياسية",
-    "العلاقات الدولية",
-    "الدبلوماسية",
-    "الأمن الوطني",
-    "العدالة الجنائية",
-    "القانون التجاري",
-    "القانون الدولي",
-    "حقوق الإنسان",
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "كلمات المرور غير متطابقة";
+    }
 
-    // Media & Communication
-    "الإعلام والاتصال",
-    "الصحافة",
-    "الإذاعة والتلفزيون",
-    "العلاقات العامة",
-    "الإعلان",
-    "الإنتاج الإعلامي",
-    "الإعلام الرقمي",
-    "التصوير الفوتوغرافي",
-    "المونتاج والإخراج",
-    "الإعلام الرياضي",
+    if (!formData.university) {
+      newErrors.university = "الجامعة مطلوبة";
+    }
 
-    // Arts & Design
-    "التصميم الجرافيكي",
-    "التصميم الداخلي",
-    "تصميم الأزياء",
-    "الفنون الجميلة",
-    "النحت",
-    "الرسم",
-    "الخط العربي",
-    "التصوير الفوتوغرافي",
-    "التصميم الصناعي",
-    "تصميم المجوهرات",
+    if (!formData.major) {
+      newErrors.major = "التخصص مطلوب";
+    }
 
-    // Architecture & Planning
-    "العمارة",
-    "التخطيط العمراني",
-    "هندسة المناظر الطبيعية",
-    "العمارة الداخلية",
-    "التصميم المعماري",
-    "إدارة الإنشاءات",
-    "تقنية البناء",
-    "المساحة",
-    "التخطيط الإقليمي",
-    "إدارة المشاريع الإنشائية",
+    if (!formData.educationLevel) {
+      newErrors.educationLevel = "المرحلة الدراسية مطلوبة";
+    }
 
-    // Social Sciences
-    "علم النفس",
-    "علم الاجتماع",
-    "الخدمة الاجتماعية",
-    "التاريخ",
-    "الجغرافيا",
-    "الأنثروبولوجيا",
-    "علم الآثار",
-    "الدراسات الإسلامية",
-    "الدراسات العربية",
-    "الفلسفة",
+    if (!formData.isCurrentlyStudying) {
+      newErrors.isCurrentlyStudying = "الحالة الدراسية مطلوبة";
+    }
 
-    // Languages & Literature
-    "الأدب العربي",
-    "اللغة الإنجليزية",
-    "اللغة الفرنسية",
-    "اللغة الألمانية",
-    "اللغة الإسبانية",
-    "اللغة الصينية",
-    "اللغة اليابانية",
-    "الترجمة",
-    "اللسانيات",
-    "الأدب المقارن",
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-    // Education
-    "التربية وعلم النفس",
-    "المناهج وطرق التدريس",
-    "الإدارة التربوية",
-    "التربية الخاصة",
-    "تقنيات التعليم",
-    "التربية الفنية",
-    "التربية البدنية",
-    "رياض الأطفال",
-    "التعليم الابتدائي",
-    "التربية الإسلامية",
-
-    // Agriculture & Food
-    "الزراعة",
-    "الإنتاج النباتي",
-    "الإنتاج الحيواني",
-    "علوم التربة",
-    "وقاية النبات",
-    "الاقتصاد الزراعي",
-    "الإرشاد الزراعي",
-    "هندسة الري",
-    "تقنية الغذاء",
-    "علوم الألبان",
-
-    // Sports & Physical Education
-    "التربية البدنية",
-    "علوم الرياضة",
-    "الطب الرياضي",
-    "الإدارة الرياضية",
-    "التدريب الرياضي",
-    "فسيولوجيا الرياضة",
-    "النشاط البدني المكيف",
-    "الترويح الرياضي",
-    "علم النفس الرياضي",
-    "الإعلام الرياضي",
-
-    // Public Administration
-    "الإدارة العامة",
-    "إدارة الموارد البشرية",
-    "إدارة المالية العامة",
-    "السياسات العامة",
-    "التنمية الإدارية",
-    "إدارة المدن",
-    "الأمن العام",
-    "إدارة الكوارث",
-    "الإدارة الصحية",
-    "إدارة التعليم",
-  ];
-
-  const educationLevels = [
-    "بكالوريوس",
-    "ماجستير",
-    "دكتوراه",
-    "دبلوم عالي",
-    "دبلوم",
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    alert("تم إنشاء الحساب بنجاح!");
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      console.log("Form submitted:", formData);
+      alert("تم إنشاء الحساب بنجاح!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Registration error:", error);
+      alert("حدث خطأ أثناء إنشاء الحساب. يرجى المحاولة مرة أخرى.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const updateFormData = (field: keyof FormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    }
   };
 
   return (
@@ -358,12 +150,13 @@ export default function SignUp() {
                   type="text"
                   placeholder="أدخل اسمك الأول"
                   value={formData.firstName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, firstName: e.target.value })
-                  }
+                  onChange={(e) => updateFormData("firstName", e.target.value)}
                   className="text-right"
-                  required
+                  disabled={isLoading}
                 />
+                {errors.firstName && (
+                  <p className="text-sm text-red-500">{errors.firstName}</p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -379,12 +172,13 @@ export default function SignUp() {
                   type="text"
                   placeholder="أدخل اسمك الأخير"
                   value={formData.lastName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, lastName: e.target.value })
-                  }
+                  onChange={(e) => updateFormData("lastName", e.target.value)}
                   className="text-right"
-                  required
+                  disabled={isLoading}
                 />
+                {errors.lastName && (
+                  <p className="text-sm text-red-500">{errors.lastName}</p>
+                )}
               </div>
             </div>
 
@@ -402,12 +196,13 @@ export default function SignUp() {
                 type="email"
                 placeholder="example@university.edu.sa"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => updateFormData("email", e.target.value)}
                 className="text-right"
-                required
+                disabled={isLoading}
               />
+              {errors.email && (
+                <p className="text-sm text-red-500">{errors.email}</p>
+              )}
             </div>
 
             {/* Password */}
@@ -425,16 +220,15 @@ export default function SignUp() {
                   type={showPassword ? "text" : "password"}
                   placeholder="أدخل كلمة مرور قوية"
                   value={formData.password}
-                  onChange={(e) =>
-                    setFormData({ ...formData, password: e.target.value })
-                  }
+                  onChange={(e) => updateFormData("password", e.target.value)}
                   className="text-right pr-10"
-                  required
+                  disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  disabled={isLoading}
                 >
                   {showPassword ? (
                     <EyeOff className="w-4 h-4" />
@@ -443,6 +237,9 @@ export default function SignUp() {
                   )}
                 </button>
               </div>
+              {errors.password && (
+                <p className="text-sm text-red-500">{errors.password}</p>
+              )}
             </div>
 
             {/* Confirm Password */}
@@ -459,12 +256,13 @@ export default function SignUp() {
                 type="password"
                 placeholder="أعد إدخال كلمة المرور"
                 value={formData.confirmPassword}
-                onChange={(e) =>
-                  setFormData({ ...formData, confirmPassword: e.target.value })
-                }
+                onChange={(e) => updateFormData("confirmPassword", e.target.value)}
                 className="text-right"
-                required
+                disabled={isLoading}
               />
+              {errors.confirmPassword && (
+                <p className="text-sm text-red-500">{errors.confirmPassword}</p>
+              )}
             </div>
 
             {/* University */}
@@ -474,15 +272,14 @@ export default function SignUp() {
                 <span>الجامعة</span>
               </Label>
               <Select
-                onValueChange={(value) =>
-                  setFormData({ ...formData, university: value })
-                }
+                onValueChange={(value) => updateFormData("university", value)}
+                disabled={isLoading}
               >
                 <SelectTrigger className="text-right">
                   <SelectValue placeholder="اختر جامعتك" />
                 </SelectTrigger>
                 <SelectContent>
-                  {saudiUniversities.map((university) => (
+                  {SAUDI_UNIVERSITIES.map((university) => (
                     <SelectItem
                       key={university}
                       value={university}
@@ -493,6 +290,9 @@ export default function SignUp() {
                   ))}
                 </SelectContent>
               </Select>
+              {errors.university && (
+                <p className="text-sm text-red-500">{errors.university}</p>
+              )}
             </div>
 
             {/* Major */}
@@ -502,15 +302,14 @@ export default function SignUp() {
                 <span>التخصص</span>
               </Label>
               <Select
-                onValueChange={(value) =>
-                  setFormData({ ...formData, major: value })
-                }
+                onValueChange={(value) => updateFormData("major", value)}
+                disabled={isLoading}
               >
                 <SelectTrigger className="text-right">
                   <SelectValue placeholder="اختر تخصصك" />
                 </SelectTrigger>
                 <SelectContent>
-                  {majors.map((major) => (
+                  {ACADEMIC_MAJORS.map((major) => (
                     <SelectItem
                       key={major}
                       value={major}
@@ -521,6 +320,9 @@ export default function SignUp() {
                   ))}
                 </SelectContent>
               </Select>
+              {errors.major && (
+                <p className="text-sm text-red-500">{errors.major}</p>
+              )}
             </div>
 
             {/* Education Level */}
@@ -530,15 +332,14 @@ export default function SignUp() {
                 <span>المرحلة الدراسية</span>
               </Label>
               <Select
-                onValueChange={(value) =>
-                  setFormData({ ...formData, educationLevel: value })
-                }
+                onValueChange={(value) => updateFormData("educationLevel", value)}
+                disabled={isLoading}
               >
                 <SelectTrigger className="text-right">
                   <SelectValue placeholder="اختر مرحلتك الدراسية" />
                 </SelectTrigger>
                 <SelectContent>
-                  {educationLevels.map((level) => (
+                  {EDUCATION_LEVELS.map((level) => (
                     <SelectItem
                       key={level}
                       value={level}
@@ -549,6 +350,9 @@ export default function SignUp() {
                   ))}
                 </SelectContent>
               </Select>
+              {errors.educationLevel && (
+                <p className="text-sm text-red-500">{errors.educationLevel}</p>
+              )}
             </div>
 
             {/* Currently Studying */}
@@ -558,9 +362,8 @@ export default function SignUp() {
                 <span>الحالة الدراسية</span>
               </Label>
               <Select
-                onValueChange={(value) =>
-                  setFormData({ ...formData, isCurrentlyStudying: value })
-                }
+                onValueChange={(value) => updateFormData("isCurrentlyStudying", value)}
+                disabled={isLoading}
               >
                 <SelectTrigger className="text-right">
                   <SelectValue placeholder="اختر حالتك الدراسية" />
@@ -574,14 +377,22 @@ export default function SignUp() {
                   </SelectItem>
                 </SelectContent>
               </Select>
+              {errors.isCurrentlyStudying && (
+                <p className="text-sm text-red-500">{errors.isCurrentlyStudying}</p>
+              )}
             </div>
 
             {/* Submit Button */}
             <Button
               type="submit"
               className="w-full btn-gradient text-white py-3"
+              disabled={isLoading}
             >
-              إنشاء الحساب
+              {isLoading ? (
+                <LoadingSpinner size="sm" />
+              ) : (
+                "إنشاء الحساب"
+              )}
             </Button>
 
             {/* Login Link */}
